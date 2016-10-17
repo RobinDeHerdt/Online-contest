@@ -2,8 +2,12 @@
 * {
 	font-family: 'lato', sans-serif;
 	font-weight: 500;
-	color: #003665 !important;
+	/*color: #003665 !important;*/
 }
+
+/*.navbar {
+	background-color: #131631;
+}*/
 
 .nav-item {
 	font-weight: 600;
