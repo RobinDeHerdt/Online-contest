@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('home');
 });
 
+Route::get('/winnaars', function () {
+    return view('vorigewinnaars');
+});
+
 Auth::routes();
 
-//Route::get('/home', 'HomeController@index');
+Route::get('/wedstrijd', 'WedstrijdController@index');

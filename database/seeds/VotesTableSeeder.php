@@ -11,13 +11,14 @@ class VotesTableSeeder extends Seeder
      */
     public function run()
     {
-     //    $votes = factory(App\Vote::class, 50)->make();
+    	DB::table('users')->insert([
+            'creation_id' => '1',
+            'user_id' => '2',
+        ]);
 
-    	// $votes->each(function($vote)
-    	// {
-    	// 	$vote->save();
-    	// });
-
-    	
+        DB::table('users')->insert([
+            'creation_id' => '2',
+            'user_id' => '4',
+        ]);
     }
 }

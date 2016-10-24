@@ -1,32 +1,28 @@
 @extends('layouts.app')
 
+@section('title')
+    Wedstrijden
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-            <div class="panel panel-default">
-                <div class="panel-heading">Photoshop contest</div>
-
-                <div class="panel-body">
-                    <p>Welcome to photoshopbattles!</p>
- 
-                    <p>The goal: photoshop given picture in the most creative way possible. You can add elements of other pictures, just make sure the original picture is in there somewhere.</p>
-
-                    <p>The 3 creations with the most votes from the community will win 1 year of creative cloud membership!</p>
-
-                    <span>Contest ends: </span> 
-                    <br>
-                    <br>
-                    <a href="/photoshopbattle"><button type="button" class="btn btn-primary">Participate now!</button></a>
-                </div>
+        <div class="col-md-8 col-md-offset-2">
+            <div class="wedstrijden-header">
+                <img src="img/pointing_hand_left.jpg">
+                <span>Wedstrijden</span>
+                <img src="img/pointing_hand_right.jpg">
             </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">Last photoshopbattles' winners:</div>
-
-                <div class="panel-body">
-                    <p>The competition has just started! No winners yet.</p>
-                    <span>3 images here</span>
-                </div>
+            <div class="content">
+                <img src="img/bg.jpg" alt="" class="img-responsive">
+                <h3>Win een jaarabonnement op humo!</h3>   
+                <p>Bewerk de gegeven foto op een creatieve manier. Je mag elementen van andere afbeeldingen gebruiken, zo lang de originele foto er maar in te vinden is.</p>
+                <p>De creatie met het meeste stemmen van de humo-lezers wint een jaarabonnement op Humo!</p>
+                <br>
+                <span>Deze wedstrijd loopt af op: 11/11/2016</span> 
+                <br>
+                <br>
+                <a href="/wedstrijd"><button type="button" class="btn-custom">Doe mee</button></a>
             </div>
         </div>
     </div>

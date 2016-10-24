@@ -1,14 +1,113 @@
-@import url('https://fonts.googleapis.com/css?family=Lato');
 * {
-	font-family: 'lato', sans-serif;
-	font-weight: 500;
-	/*color: #003665 !important;*/
+	font-family: sans-serif;
 }
 
-/*.navbar {
-	background-color: #131631;
-}*/
+.col-md-12 {
+	padding: 0;
+}
 
 .nav-item {
 	font-weight: 600;
+}
+
+.navbar {
+	width: 100%;
+	border: none !important;
+}
+
+.navbar-right li a:link {
+	color: black !important;
+}
+
+.navbar-right li a:hover {
+	color: #ee090c !important;
+	transition: 0.2s ease-in-out color;
+}
+
+.navbar-brand {
+	padding: 0;
+}
+
+.btn-primary {
+	border-color: #ee090c;
+	background-color: #ee090c;
+}
+
+.wedstrijden-header {
+	text-align: center;
+	margin: 50px 0 50px 0;
+}
+
+.wedstrijden-header span{
+	position: relative;
+	top: 4px;
+	font-family: 'Georgia', serif;
+	font-size: 2em;
+	line-height: 1.3em;
+	font-style: italic;
+    font-weight: 700;
+    text-transform: none;
+	width: 20%;
+	color: #ee090c;
+}
+
+.wedstrijden-header img {
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+.footer {
+	display:block;
+	position: fixed;
+	width: 100%;
+	height: 60px;
+	background-color: black;
+	margin-left: -15px;
+	bottom: 0;
+}
+
+.footer a  {
+	margin-top: 20px;
+	display: inline-block;
+	margin-right: 30px;
+	color: white;
+}
+
+.content {
+	margin-bottom: 100px;
+	border: dotted 2px black;
+	padding: 10px;
+}
+
+.btn-custom {
+	background-color: #ee090c;
+    border: none;
+    color: white;
+    padding: 15px 64px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.wedstrijd-content {
+	width: 80%;
+	margin-left: 10%;
+	margin-bottom: 50px;
+}
+
+.wedstrijd-content img {
+	display:inline-block;
+	width: 450px;
+	height: auto;
+}
+
+.wedstrijd-content h2 {
+	padding: 20px 0 20px 0;
+}
+
+.img-holder {
+	margin-top: 40px;
+	padding-bottom: 5%;
+	border-top: dotted 2px black;
 }

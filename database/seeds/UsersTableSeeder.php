@@ -13,10 +13,7 @@ class UsersTableSeeder extends Seeder
     {
     	factory(App\User::class, 50)->create()->each(function($user)
     	{
-    		$user->creations()->save(factory(App\Creation::class)->make())->each(function($creation)
-    		{
-    			$creation->votes()->save(factory(App\Vote::class)->make());
-    		});
+    		$user->creations()->save(factory(App\Creation::class)->make());
     	});
 
         DB::table('users')->insert([
