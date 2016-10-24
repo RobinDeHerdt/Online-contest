@@ -15,10 +15,10 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/winnaars', function () {
-    return view('vorigewinnaars');
-});
 
 Auth::routes();
 
+Route::get('/deelnemen', 'DeelneemController@index')->middleware('auth');
+Route::post('/deelnemen', 'DeelneemController@store')->middleware('auth');
 Route::get('/wedstrijd', 'WedstrijdController@index');
+Route::get('/winnaars' , 'WinnaarController@index');

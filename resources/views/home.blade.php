@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Wedstrijden
+    Humo: The Wild Site
 @endsection
 
 @section('content')
