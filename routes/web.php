@@ -22,3 +22,5 @@ Route::get('/deelnemen', 'DeelneemController@index')->middleware('auth');
 Route::post('/deelnemen', 'DeelneemController@store')->middleware('auth');
 Route::get('/wedstrijd', 'WedstrijdController@index');
 Route::get('/winnaars' , 'WinnaarController@index');
+
+Route::post('/wedstrijd' , 'WedstrijdController@store');

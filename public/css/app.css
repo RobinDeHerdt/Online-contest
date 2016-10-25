@@ -156,12 +156,15 @@
 	width: 49%;
 	height: 100%;
 	display: inline-block;
+	font-size: 1.2em;
 }
 
 .original {
 	width: 100%;
 	display:inline-block;
+	padding-top:25px;
 	border-bottom: dotted 2px black;
+	border-top: dotted 2px black;
 }
 
 .winnaar-container img{
@@ -172,6 +175,32 @@
 	width: 100%;
 	margin-top: 25px;
 	float:right;
+}
+
+.upvote {
+	position: relative;
+	height: 15px;
+	bottom: 30px;
+	margin-bottom: -15px;
+	left: 15px;
+	color: black;
+}
+
+.upvote p{
+	display: inline-block;
+}
+.btn-upvote {
+	padding: 10px;
+	background-color: white;
+	display: inline-block;
+}
+
+.btn-upvote:hover {
+	cursor: pointer;
+}
+
+.votecount {
+	color: white;
 }
 
 @media (max-width: 1000px) {
