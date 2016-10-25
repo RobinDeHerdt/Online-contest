@@ -11,10 +11,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-    	factory(App\User::class, 50)->create()->each(function($user)
-    	{
-    		$user->creations()->save(factory(App\Creation::class)->make());
-    	});
+    	factory(App\User::class, 50)->create();
 
         DB::table('users')->insert([
             'first_name' => 'Robin',

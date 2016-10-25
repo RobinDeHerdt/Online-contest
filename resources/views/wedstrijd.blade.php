@@ -13,6 +13,12 @@
         <br>
         <a href="/winnaars">Bekijk hier de winnaars van vorige weken</a>
            <h1>Wedstrijdpagina</h1>
+
+			@foreach ($creations as $creation)
+				<h3>{{$creation->title}}</h3>
+				<img src="{{$creation->image_url}}" alt="{{$creation->title}}">
+			@endforeach
+
         </div>
     </div>
 </div>

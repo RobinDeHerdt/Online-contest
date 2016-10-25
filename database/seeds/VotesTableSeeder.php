@@ -11,12 +11,12 @@ class VotesTableSeeder extends Seeder
      */
     public function run()
     {
-    	DB::table('users')->insert([
+    	DB::table('votes')->insert([
             'creation_id' => '1',
             'user_id' => '2',
         ]);
 
-        DB::table('users')->insert([
+        DB::table('votes')->insert([
             'creation_id' => '2',
             'user_id' => '4',
         ]);

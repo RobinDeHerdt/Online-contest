@@ -22,7 +22,7 @@ class DeelneemController extends Controller
     {
     	$creation = new Creation();
 
-    	$path = $request->image->store('img', 'public');
+    	$path = $request->image->store('img/creaties', 'upload');
 
     	$creation->description  = $request->title;
     	$creation->image_url 	= $path;
