@@ -9,7 +9,12 @@
     <div class="row">
         <div class="wedstrijd-content">
         	<a href="/wedstrijd">Terug naar de wedstrijdpagina</a>
-           	<h1>Deelnemen</h1>
+
+           	<div class="wedstrijden-header">
+                <img src="img/pointing_hand_left.jpg">
+                <span>Deelnemen</span>
+                <img src="img/pointing_hand_right.jpg">
+            </div>
 
            	{!! Form::open(array('class' => 'form-horizontal', 'files' => true))  !!}
 				{{ csrf_field() }}

@@ -20,16 +20,28 @@ class DeelneemController extends Controller
 
     public function store(Request $request)
     {
+    	$user_id = Auth::user()->id;
     	$creation = new Creation();
+   
+  		if (Creation::where('user_id', '=', $user_id)->exists())
+  		{
+  			$usercreations = Creation::where('user_id', '=', $user_id)->get();
 
-    	$path = $request->image->store('img/creaties', 'upload');
+  			// Get current date + periods and check if user has already submitted this period
+  			
+  			dd('there is already a record with your name on it' . $usercreations);
+  		}
+  		else 
+  		{
+  			$path = $request->image->store('img/creaties', 'upload');
 
-    	$creation->description  = $request->title;
-    	$creation->image_url 	= $path;
-    	$creation->user_id 		= Auth::user()->id;
+	    	$creation->description  = $request->title;
+	    	$creation->image_url 	= $path;
+	    	$creation->user_id 		= $user_id;
 
- 		$creation->save();
+	 		$creation->save();
 
-    	return redirect('wedstrijd');
+	    	return redirect('wedstrijd');
+  		} 	
     }
 }
