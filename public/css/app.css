@@ -111,15 +111,6 @@
 	border-bottom: dotted 2px black;
 }
 
-/*.creation-block {
-	width: 33%;
-}
-
-.creation-image img {
-	width: 100%;
-	height: auto;
-}*/
-
 .creation-container {
    /* Prevent vertical gaps */
    line-height: 0;
@@ -180,27 +171,30 @@
 .upvote {
 	position: relative;
 	height: 15px;
-	bottom: 30px;
+	bottom: 50px;
 	margin-bottom: -15px;
-	left: 15px;
+	left: 38%;
 	color: black;
 }
 
-.upvote p{
-	display: inline-block;
-}
 .btn-upvote {
 	padding: 10px;
 	background-color: white;
 	display: inline-block;
 }
 
-.btn-upvote:hover {
+.btn-upvote img:hover {
 	cursor: pointer;
 }
 
 .votecount {
+	position:relative;
+	top: 2.5px;
 	color: white;
+	background-color: white;
+	border-radius: 50%;
+	font-size: 1.3em;
+	display: inline-block;
 }
 
 @media (max-width: 1000px) {

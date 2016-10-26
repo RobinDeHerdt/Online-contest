@@ -18,10 +18,12 @@
 </script>
 <script>
 	$(document).ready(function() {
-    	$( ".btn-upvote" ).click(function(event) {
+    	$( ".btn-upvote img" ).click(function(event) {
     		var id = event.target.id;
+    		console.log("ID: " + id);
 
-    		var count = $("#votecount_id_" + id).val();
+    		var count = $("#votecount_id_" + id).text();
+    		console.log("COUNT: " + count);
     		count++;
     		$("#votecount_id_" + id).text(count);
 
@@ -42,9 +44,6 @@
     <div class="row">
         
         <div class="wedstrijd-content">
-        <a href="/deelnemen">Deelnemen</a>
-        <br>
-        <a href="/winnaars">Bekijk hier de winnaars van vorige weken</a>
             <div class="wedstrijden-header">
                 <img src="img/pointing_hand_left.jpg">
                 <span>Wedstrijdpagina</span>
@@ -58,6 +57,7 @@
 	            <div class="original-uitleg">
             		<p>Bewerk de foto hiernaast op een creatieve manier. Je mag elementen van andere afbeeldingen gebruiken, zo lang de originele foto er maar in te vinden is.</p>
                 <p>De creatie met het meeste stemmen van de humo-lezers wint een jaarabonnement op Humo!</p>
+                <p>Inspiratie nodig? <a href="/winnaars">Bekijk hier de winnaars van vorige weken.</a></p>
                 <a href="/deelnemen"><button type="button" class="btn-custom btn-custom-wedstrijd">Stuur hier jouw creatie in!</button></a>
             	</div>
             </div>
@@ -69,16 +69,13 @@
 			<div class="grid creation-container">
 			@if(!$creations->isEmpty())
 				@foreach ($creations as $creation)
-					<div class="ghost-div">
-						<!-- <p>{{$creation->description}}</p> -->
 						<div class="grid-item">
-							<img src="{{$creation->image_url}}" alt="{{$creation->description}}" >
+							<img src="{{$creation->image_url}}" alt="{{$creation->description}}">
 							<div class="upvote">
-								<div class="btn-upvote" id="{{$creation->id}}">Upvote</div>
 								<p class="votecount" id="votecount_id_{{$creation->id}}">{{ $creation->votes()->count()}}</p>
+								<div class="btn-upvote" style="width: 45px; border-radius: 50%"><img src="img/upvote-2.png" id="{{$creation->id}}"></div>
 							</div>
 						</div>
-					</div>
 				@endforeach
 			@else
 				<h3>Er zijn nog geen inzendingen.</h3>

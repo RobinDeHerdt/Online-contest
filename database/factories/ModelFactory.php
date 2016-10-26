@@ -20,6 +20,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'date_of_birth' => $faker->date($format = 'Y-m-d', $max = 'now'),
         'email' => $faker->unique()->safeEmail,
         'ip_adress' => $faker->ipv4, 
+        'isAdmin' => false,
         'password' => $password ?: $password = bcrypt('secret'),
         'remember_token' => str_random(10),
     ];
