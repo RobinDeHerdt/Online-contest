@@ -13,8 +13,6 @@ class DeelneemController extends Controller
 {
     public function index()
     {
-    	
-    	
         return view('deelnemen');
     }
 
@@ -36,10 +34,10 @@ class DeelneemController extends Controller
   			$path = $request->image->store('img/creaties', 'upload');
 
 	    	$creation->description  = $request->title;
-	    	$creation->image_url 	= $path;
-	    	$creation->user_id 		= $user_id;
+	    	$creation->image_url 	  = $path;
+	    	$creation->user_id 		  = $user_id;
 
-	 		$creation->save();
+	 	    $creation->save();
 
 	    	return redirect('wedstrijd');
   		} 	

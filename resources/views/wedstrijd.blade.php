@@ -18,23 +18,35 @@
 </script>
 <script>
 	$(document).ready(function() {
+
+		$.ajax({
+			type: "GET",
+	    	url: "/getuservotes",
+	    	success: function(data){
+	    		for (var i = 0; i <= data.length; i++)
+	    		{
+	    			$("#" + i).attr("src","img/upvote-3.png");
+	    		}
+	    	}
+		});
+
     	$( ".btn-upvote img" ).click(function(event) {
     		var id = event.target.id;
-    		console.log("ID: " + id);
-
-    		var count = $("#votecount_id_" + id).text();
-    		console.log("COUNT: " + count);
-    		count++;
-    		$("#votecount_id_" + id).text(count);
-
+    		
   			$.ajax({
   				type: "POST",
 		    	url: "/wedstrijd",
 		    	data: {
 		    		creation_id : id
 		    	},
-		    	success: function(){
-		      		console.log('Success!');
+		    	success: function(data){
+		      		if(data.status == "success")
+		      		{
+		      			var count = $("#votecount_id_" + id).text();
+		      			count++;
+		      			$("#votecount_id_" + id).text(count);
+		      			$("#" + id).attr("src","img/upvote-3.png");
+		      		}
 		    	}
 			});
 		});
@@ -57,6 +69,11 @@
 	            <div class="original-uitleg">
             		<p>Bewerk de foto hiernaast op een creatieve manier. Je mag elementen van andere afbeeldingen gebruiken, zo lang de originele foto er maar in te vinden is.</p>
                 <p>De creatie met het meeste stemmen van de humo-lezers wint een jaarabonnement op Humo!</p>
+  				<form action="/download" method="post">
+  					<input type="hidden" name="_token" value="{{ csrf_token() }}">
+  					<input type="hidden" value="/img/contests/week-1.jpg" name="file_url">
+  					<input type="submit" value="Download">
+  				</form>
                 <p>Inspiratie nodig? <a href="/winnaars">Bekijk hier de winnaars van vorige weken.</a></p>
                 <a href="/deelnemen"><button type="button" class="btn-custom btn-custom-wedstrijd">Stuur hier jouw creatie in!</button></a>
             	</div>
@@ -73,7 +90,11 @@
 							<img src="{{$creation->image_url}}" alt="{{$creation->description}}">
 							<div class="upvote">
 								<p class="votecount" id="votecount_id_{{$creation->id}}">{{ $creation->votes()->count()}}</p>
-								<div class="btn-upvote" style="width: 45px; border-radius: 50%"><img src="img/upvote-2.png" id="{{$creation->id}}"></div>
+								@if(Auth::user())
+								<div class="btn-upvote" style="width: 45px; border-radius: 50%">
+										<img src="img/upvote-2.png" id="{{$creation->id}}">
+								</div>
+								@endif
 							</div>
 						</div>
 				@endforeach
