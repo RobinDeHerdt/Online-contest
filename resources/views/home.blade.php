@@ -14,7 +14,7 @@
                 <img src="img/pointing_hand_right.jpg">
             </div>
             <div class="content">
-                <img src="img/bg.jpg" alt="" class="img-responsive">
+                <img src="img/contests/week-1.jpg" alt="" class="img-responsive">
                 <h3>Win een jaarabonnement op humo!</h3>   
                 <p>Bewerk de gegeven foto op een creatieve manier. Je mag elementen van andere afbeeldingen gebruiken, zo lang de originele foto er maar in te vinden is.</p>
                 <p>De creatie met het meeste stemmen van de humo-lezers wint een jaarabonnement op Humo!</p>

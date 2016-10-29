@@ -25,48 +25,71 @@ class WedstrijdController extends Controller
 
     public function store(Request $request)
     {
-        $user_id = Auth::user()->id;
         $creation_id = $request['creation_id'];
 
-        $result = DB::table('votes')
+        if(Auth::user())
+        {
+            $user_id = Auth::user()->id;
+
+            $result = DB::table('votes')
             ->where('creation_id', '=', $creation_id)
             ->where('user_id', '=', Auth::user()->id)
             ->exists();
 
-        if (!$result) 
-        {
-            $vote = new Vote();
+            if (!$result) 
+            {
+                $vote = new Vote();
 
-            $vote->user_id      = $user_id;
-            $vote->creation_id  = $creation_id;
+                $vote->user_id      = $user_id;
+                $vote->creation_id  = $creation_id;
 
-            $vote->save();
+                $vote->save();
 
-            $votecount = Vote::where('creation_id', '=', $creation_id)->count();
+                $votecount = Vote::where('creation_id', '=', $creation_id)->count();
 
-            $response = array(
-                'status'        => 'success',
-                'votecount'     => $votecount,
-            );
+                $response = array(
+                    'status'        => 'success',
+                    'votecount'     => $votecount,
+                );
 
-            return Response::json($response);
-        } 
+                return Response::json($response);
+            } 
+            else 
+            {
+                $votecount = Vote::where('creation_id', '=', $creation_id)->count();
+
+                $response = array(
+                    'status'        => 'failed',
+                    'votecount'     => $votecount,
+                );
+                
+                return Response::json($response);
+            }
+        }
         else 
         {
-            $votecount = Vote::where('creation_id', '=', $creation_id)->count();
-
             $response = array(
-                'status'        => 'failed',
-                'votecount'     => $votecount,
+                    'status'        => 'failed_nologin',
             );
-            
+                
+            $request->session()->flash('status', '');
+
             return Response::json($response);
         }
     }
 
     public function sendUserVotes()
     {
-        $response = DB::table('votes')->where('user_id', '=', Auth::user()->id)->get();
+        if(Auth::user())
+        {
+            $response = DB::table('votes')->where('user_id', '=', Auth::user()->id)->get();
+        }
+        else
+        {
+            $response = array(
+                    'status'        => 'nologin',
+            );
+        }
 
         return Response::json($response);
     }

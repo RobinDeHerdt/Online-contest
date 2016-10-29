@@ -47,8 +47,8 @@
                                     Login
                                 </button>
 
-                                <a class="btn btn-link" href="{{ url('/password/reset') }}">
-                                    Wachtwoord vergeten?
+                                <a class="btn btn-link" href="{{ url('/registreer') }}">
+                                    Nog geen account? Klik hier om te registreren.
                                 </a>
                             </div>
                         </div>

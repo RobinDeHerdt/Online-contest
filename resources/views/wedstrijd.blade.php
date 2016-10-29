@@ -23,16 +23,22 @@
 			type: "GET",
 	    	url: "/getuservotes",
 	    	success: function(data){
-	    		for (var i = 0; i <= data.length; i++)
+	    		if(data.status == "nologin")
 	    		{
-	    			$("#" + i).attr("src","img/upvote-3.png");
+	    			console.log("not logged in");
+	    		}
+	    		else 
+	    		{
+	    			for (var i = 0; i < data.length; i++)
+		    		{
+		    			$("#" + data[i].creation_id).attr("src","img/upvote-3.png");
+		    		}
 	    		}
 	    	}
 		});
 
-    	$( ".btn-upvote img" ).click(function(event) {
+    	$( ".thumbsup" ).click(function(event) {
     		var id = event.target.id;
-    		
   			$.ajax({
   				type: "POST",
 		    	url: "/wedstrijd",
@@ -40,12 +46,16 @@
 		    		creation_id : id
 		    	},
 		    	success: function(data){
-		      		if(data.status == "success")
+					if(data.status == "success")
 		      		{
 		      			var count = $("#votecount_id_" + id).text();
 		      			count++;
 		      			$("#votecount_id_" + id).text(count);
 		      			$("#" + id).attr("src","img/upvote-3.png");
+		      		}
+		      		else if (data.status == "failed_nologin")
+		      		{
+		      			window.location = "http://server.local/login"
 		      		}
 		    	}
 			});
@@ -54,8 +64,14 @@
 </script>
 <div class="container col-md-10 col-md-offset-1">
     <div class="row">
-        
         <div class="wedstrijd-content">
+        @if(Session::has('status'))
+        <div class="alert alert-success">
+	            {{Session::get('status')}}	   
+		</div>
+		@endif
+
+	        
             <div class="wedstrijden-header">
                 <img src="img/pointing_hand_left.jpg">
                 <span>Wedstrijdpagina</span>
@@ -72,10 +88,11 @@
   				<form action="/download" method="post">
   					<input type="hidden" name="_token" value="{{ csrf_token() }}">
   					<input type="hidden" value="/img/contests/week-1.jpg" name="file_url">
-  					<input type="submit" value="Download">
+  					<input type="submit" value="Download foto">
   				</form>
                 <p>Inspiratie nodig? <a href="/winnaars">Bekijk hier de winnaars van vorige weken.</a></p>
                 <a href="/deelnemen"><button type="button" class="btn-custom btn-custom-wedstrijd">Stuur hier jouw creatie in!</button></a>
+                <p id="stemoproep">Of stem hieronder op je favoriete creaties!</p>
             	</div>
             </div>
            <div class="wedstrijden-header">
@@ -88,13 +105,12 @@
 				@foreach ($creations as $creation)
 						<div class="grid-item">
 							<img src="{{$creation->image_url}}" alt="{{$creation->description}}">
-							<div class="upvote">
-								<p class="votecount" id="votecount_id_{{$creation->id}}">{{ $creation->votes()->count()}}</p>
-								@if(Auth::user())
-								<div class="btn-upvote" style="width: 45px; border-radius: 50%">
-										<img src="img/upvote-2.png" id="{{$creation->id}}">
+							<div class="votecontainer">
+								
+								<div class="votecount-container">
+									<p class="votecount" id="votecount_id_{{$creation->id}}">{{ $creation->votes()->count()}}</p>
 								</div>
-								@endif
+								<img src="img/upvote-2.png" id="{{$creation->id}}" class="thumbsup">
 							</div>
 						</div>
 				@endforeach

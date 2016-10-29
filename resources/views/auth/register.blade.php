@@ -99,10 +99,13 @@
                         </div>
 
                         <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
+                            <div class="col-md-8 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
                                     Registreer
                                 </button>
+                                <a class="btn btn-link" href="{{ url('/login') }}">
+                                    Heb je al een account? Klik hier om in te loggen.
+                                </a>
                             </div>
                         </div>
                     </form>

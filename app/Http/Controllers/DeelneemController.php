@@ -39,6 +39,8 @@ class DeelneemController extends Controller
 
 	 	    $creation->save();
 
+        $request->session()->flash('status', 'Je creatie werd geupload!');
+
 	    	return redirect('wedstrijd');
   		} 	
     }

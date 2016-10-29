@@ -122,19 +122,22 @@
    column-count:         3;
    column-gap:           0px;
 
-	margin-top: 25px;
-	margin-bottom: 80px;
+   margin-bottom: 80px;
 }
-.creation-container img{
-  /* Just in case there are inline attributes */
-  width: 100% !important;
-  height: auto !important;
-  padding: 2px;
+
+.grid-item {
+	margin-bottom: -25px;
+}
+
+.creation-container img{ 
+ 	padding: 2px;
+  	width: 100%;
+  	height: auto;
 }
 
 .original-container img{
 	width: 100%;
-	margin-bottom: 25px;
+	margin-bottom: 75px;
 }
 
 .original-container {
@@ -143,9 +146,10 @@
 	margin-right:1%;
 }
 .original-uitleg {
+	position: relative;
+	top: 100px;
 	padding-left: 20px;
 	width: 49%;
-	height: 100%;
 	display: inline-block;
 	font-size: 1.2em;
 }
@@ -153,7 +157,6 @@
 .original {
 	width: 100%;
 	display:inline-block;
-	padding-top:25px;
 	border-bottom: dotted 2px black;
 	border-top: dotted 2px black;
 }
@@ -166,35 +169,54 @@
 	width: 100%;
 	margin-top: 25px;
 	float:right;
+	font-weight: 600; 
+	font-size: 24px
+	z-index: 10;
 }
 
-.upvote {
-	position: relative;
-	height: 15px;
-	bottom: 50px;
-	margin-bottom: -15px;
-	left: 38%;
-	color: black;
+#stemoproep {
+	text-align:center; 
+	position: relative; 
+	top: 40px; 
+	color: red;
+	font-size: 20px;
+	font-weight: 600;
+	z-index: -10;
 }
 
-.btn-upvote {
-	padding: 10px;
+.votecontainer {
+	padding:2px;
+	position:relative;
+	top: -35px;
+	width: 17%;
+	height: 50%;
 	background-color: white;
-	display: inline-block;
 }
 
-.btn-upvote img:hover {
+.votecontainer img{
+	margin-left: 15%;
+	width: 50%;
+	height: auto;
+}
+
+.votecontainer img:hover {
 	cursor: pointer;
 }
 
 .votecount {
 	position:relative;
-	top: 2.5px;
-	color: white;
+	top: 4px;
+	color: #f23e3e;
 	background-color: white;
-	border-radius: 50%;
 	font-size: 1.3em;
+	font-weight: 600;
+}
+
+.votecount-container {
 	display: inline-block;
+	border-radius: 50%;
+	width: 10%;
+	margin-left:15%;
 }
 
 @media (max-width: 1000px) {
