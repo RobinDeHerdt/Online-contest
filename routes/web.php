@@ -28,3 +28,5 @@ Route::get('/getuservotes' , 'WedstrijdController@sendUserVotes');
 
 Route::post('/wedstrijd' , 'WedstrijdController@store');
 Route::post('/download' , 'WedstrijdController@download');
+Route::post('/administrator/destroy/{id}', 'AdminController@destroy');
+Route::post('/administrator/restore/{id}', 'AdminController@restore');
