@@ -29,6 +29,9 @@
                 <li><a href="{{ url('/login') }}" class="nav-item">Login</a></li>
                 <li><a href="{{ url('/registreer') }}" class="nav-item">Registreer</a></li>
             @else
+                @if (Auth::user()->isAdmin)
+                  <li><a href="{{ url('/administrator') }}" class="nav-item">Adminpaneel</a></li>
+                @endif
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                         {{ Auth::user()->first_name }} <span class="caret"></span>

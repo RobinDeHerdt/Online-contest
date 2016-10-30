@@ -83,14 +83,19 @@
 	            	<img src="img/contests/week-1.jpg" alt="">
 	            </div>
 	            <div class="original-uitleg">
-            		<p>Bewerk de foto hiernaast op een creatieve manier. Je mag elementen van andere afbeeldingen gebruiken, zo lang de originele foto er maar in te vinden is.</p>
-                <p>De creatie met het meeste stemmen van de humo-lezers wint een jaarabonnement op Humo!</p>
-  				<form action="/download" method="post">
-  					<input type="hidden" name="_token" value="{{ csrf_token() }}">
-  					<input type="hidden" value="/img/contests/week-1.jpg" name="file_url">
-  					<input type="submit" value="Download foto">
-  				</form>
-                <p>Inspiratie nodig? <a href="/winnaars">Bekijk hier de winnaars van vorige weken.</a></p>
+                <h3>Werkwijze: </h3>
+                <ol>
+                	<li>
+                		Download de originele foto hier: 
+	                	<form action="/download" method="post">
+	  						<input type="hidden" name="_token" value="{{ csrf_token() }}">
+	  						<input type="hidden" value="/img/contests/week-1.jpg" name="file_url">
+	  						<input type="submit" value="Download" id="btn-download">
+	  					</form>
+  					</li>
+  					<li>Bewerk de foto op een creatieve manier. Je mag elementen van andere afbeeldingen gebruiken, zo lang een deel van de originele foto er maar in te vinden is.</li>
+  					<li>Upload de foto door op de rode knop hieronder te klikken.</li>
+                </ol>
                 <a href="/deelnemen"><button type="button" class="btn-custom btn-custom-wedstrijd">Stuur hier jouw creatie in!</button></a>
                 <p id="stemoproep">Of stem hieronder op je favoriete creaties!</p>
             	</div>
