@@ -8,6 +8,6 @@ class Winner extends Model
 {
     public function creation()
     {
-        return $this->hasOne('App\Creation');
+        return $this->belongsTo('App\Creation');
     }
 }

@@ -21,16 +21,18 @@
                 <br>
                 <a href="/wedstrijd"><button type="button" class="btn-custom">Doe mee</button></a>
             </div>
+            
             <div class="wedstrijden-header">
                 <img src="img/pointing_hand_left.jpg">
                 <span>Winnaars</span>
                 <img src="img/pointing_hand_right.jpg">
             </div>
             <div class="content">
-                <img src="img/contests/winner-2-week-1.png" class="img-responsive" style="width:100%">
-                <h3>Winnaar week {1}</h3>
-                <p>is {voornaam - achternaam}</p>
+                <img src="{{ $winningcreation->image_url }}" class="img-responsive" style="width:100%">
+                <h3>Winnaar week {{ $winningcreation->id}}</h3>
+                <strong>is {{ $winninguser->first_name . " " . $winninguser->last_name }}</strong>
             </div>
+            
         </div>
     </div>
 </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Contestimage;
+use App\Winner;
 
 class HomeController extends Controller
 {
@@ -25,8 +26,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $contestimage = Contestimage::where('isUsed', false)->first();
-        
-        return view('home', ['contestimage' => $contestimage]);
+        $contestimage   = Contestimage::where('isUsed', false)->first();
+        $winner         = Winner::orderBy('id', 'asc')->first();
+
+        $winningcreation   = $winner->creation()->first();
+        $winninguser       = $winningcreation->user()->first();
+
+        return view('home', ['contestimage' => $contestimage,'winningcreation' => $winningcreation,'winninguser' => $winninguser]);
     }
 }

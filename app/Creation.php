@@ -21,6 +21,6 @@ class Creation extends Model
 
     public function winner()
     {
-        return $this->belongsTo('App\Winner');
+        return $this->hasOne('App\Winner');
     }
 }
