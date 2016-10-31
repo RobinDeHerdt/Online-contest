@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Photoshop wedstrijd
+    Winnaars
 @endsection
 
 @section('content')

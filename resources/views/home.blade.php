@@ -30,9 +30,11 @@
             <div class="content">
                 <img src="{{ $winningcreation->image_url }}" class="img-responsive" style="width:100%">
                 <h3>Winnaar week {{ $winningcreation->id}}</h3>
-                <strong>is {{ $winninguser->first_name . " " . $winninguser->last_name }}</strong>
+                <strong>{{ $winninguser->first_name . " " . $winninguser->last_name . " met " . "'" .$winningcreation->description . "'"}}</strong>
+                <br>
+                <br>
+                <a href="/winnaars">Bekijk alle winnaars van deze wedstrijd</a>
             </div>
-            
         </div>
     </div>
 </div>
