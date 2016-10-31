@@ -1,11 +1,13 @@
 <?php
 
 namespace App\Console\Commands;
-
+use Illuminate\Mail\Mailable;
 use Illuminate\Console\Command;
+use App\User;
 use App\Winner;
 use App\Creation;
 use App\Contestimage;
+use App\Mail\ContestResults;
 
 class MyJob extends Command
 {
@@ -57,7 +59,13 @@ class MyJob extends Command
             $winner->creation_id = $mostVotedCreation->id;
             $winner->save();
 
+            $user = $mostVotedCreation->user()->first();
+
             echo "Winner picked\n";
+
+            \Mail::to("rdh_robin@hotmail.com")->send(new ContestResults($winner, $user));
+
+            echo "Email with results sent\n";
 
             // Zet als dit werkt bij alle huidige deelnames isParticipating op false
             foreach ($orderedCreations as $creation) {
@@ -65,7 +73,7 @@ class MyJob extends Command
                 $creation->save();
             }
 
-        echo "Soft deleted creations for this cycle\n";
+            echo "Soft deleted creations for this cycle\n";
         }
         // Zet gebruikte contestimage op true
         $contestimage = Contestimage::where('isUsed', false)->first();

@@ -45,5 +45,7 @@ class HomeController extends Controller
 
             return view('home', ['contestimage' => $contestimage, 'isThereAWinner' => $isThereAWinner]);
         }
+
+        // Elsif check if there is a contest image, zo niet, wedstrijd afgelopen (geen link meer naar de wedstrijdpagina)
     }
 }
