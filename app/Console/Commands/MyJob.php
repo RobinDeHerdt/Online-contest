@@ -63,7 +63,7 @@ class MyJob extends Command
 
             echo "Winner picked\n";
 
-            \Mail::to("robindh95@gmail.com")->send(new ContestResults($winner, $user));
+            // \Mail::to("robindh95@gmail.com")->send(new ContestResults($winner, $user));
 
             echo "Email with results sent\n";
 

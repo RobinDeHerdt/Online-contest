@@ -21,7 +21,6 @@
                 <br>
                 <a href="/wedstrijd"><button type="button" class="btn-custom">Doe mee</button></a>
             </div>
-            
             @if ($isThereAWinner)
             <div class="wedstrijden-header">
                 <img src="img/pointing_hand_left.jpg">
@@ -30,7 +29,7 @@
             </div>
             <div class="content">
                 <img src="{{ $winningcreation->image_url }}" class="img-responsive" style="width:100%">
-                <h3>Winnaar week {{ $winningcreation->id}}</h3>
+                <h3>Winnaar week {{ $winner->id}}</h3>
                 <strong>{{ $winninguser->first_name . " " . $winninguser->last_name . " met " . "'" .$winningcreation->description . "'"}}</strong>
                 <br>
                 <br>

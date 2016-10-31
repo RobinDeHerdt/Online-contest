@@ -7,61 +7,8 @@
 @section('content')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://unpkg.com/masonry-layout@4.1/dist/masonry.pkgd.js"></script>
-<script>
-	(function() {
-		var elem = document.querySelector('.grid');
-		var msnry = new Masonry( elem, {
-	  	itemSelector: '.grid-item',
-	  	columnWidth: 200
-		});
-	});
-</script>
-<script>
-	$(document).ready(function() {
+<script src="/js/main.js"></script>
 
-		$.ajax({
-			type: "GET",
-	    	url: "/getuservotes",
-	    	success: function(data){
-	    		if(data.status == "nologin")
-	    		{
-	    			console.log("not logged in");
-	    		}
-	    		else 
-	    		{
-	    			for (var i = 0; i < data.length; i++)
-		    		{
-		    			$("#" + data[i].creation_id).attr("src","img/upvote-3.png");
-		    		}
-	    		}
-	    	}
-		});
-
-    	$( ".thumbsup" ).click(function(event) {
-    		var id = event.target.id;
-  			$.ajax({
-  				type: "POST",
-		    	url: "/wedstrijd",
-		    	data: {
-		    		creation_id : id
-		    	},
-		    	success: function(data){
-					if(data.status == "success")
-		      		{
-		      			var count = $("#votecount_id_" + id).text();
-		      			count++;
-		      			$("#votecount_id_" + id).text(count);
-		      			$("#" + id).attr("src","img/upvote-3.png");
-		      		}
-		      		else if (data.status == "failed_nologin")
-		      		{
-		      			window.location = "http://server.local/login"
-		      		}
-		    	}
-			});
-		});
-	});
-</script>
 <div class="container col-md-10 col-md-offset-1 padding-bottom">
     <div class="row">
         <div class="wedstrijd-content">
@@ -70,8 +17,11 @@
 	            {{Session::get('status')}}	   
 		</div>
 		@endif
-
-	        
+		@if(Session::has('failedstatus'))
+        <div class="alert alert-danger">
+	            {{Session::get('failedstatus')}}	   
+		</div>
+		@endif
             <div class="wedstrijden-header">
                 <img src="img/pointing_hand_left.jpg">
                 <span>Wedstrijdpagina</span>
@@ -110,7 +60,6 @@
 						<div class="grid-item">
 							<img src="{{$creation->image_url}}" alt="{{$creation->description}}">
 							<div class="votecontainer">
-								
 								<div class="votecount-container">
 									<p class="votecount" id="votecount_id_{{$creation->id}}">{{ $creation->votes()->count()}}</p>
 								</div>

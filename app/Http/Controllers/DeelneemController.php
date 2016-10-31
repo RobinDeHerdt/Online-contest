@@ -18,22 +18,21 @@ class DeelneemController extends Controller
 
     public function store(Request $request)
     {
-    	$user_id = Auth::user()->id;
+      $this->validate($request, [
+        'title'     => 'required|max:255',
+        'image'     => 'required|image',
+      ]);
+
+      $user_id = Auth::user()->id;
     	$creation = new Creation();
         
       $usercreations = Creation::where('user_id', '=', $user_id)->get();
 
       if($usercreations->where('isParticipating', true)->count())
       {
+  			 $request->session()->flash('failedstatus', 'Je hebt deze week al meegedaan aan deze wedstrijd.');
 
-      // }
-
-  		// if ()
-  		// {
-  			// $usercreations = Creation::where('user_id', '=', $user_id)->get();
-
-  			
-  			dd('You are already participating in this weeks contest. Chill out!' . $usercreations);
+         return redirect('wedstrijd');
   		}
   		else 
   		{

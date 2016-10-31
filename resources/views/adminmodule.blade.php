@@ -54,7 +54,7 @@
             <img src="img/pointing_hand_right.jpg">
         </div>
         @if (!$softDeletedCreations->count())
-			<h1>Er zijn geen gediskwalificeerden.</h1>
+			<h1>Er zijn geen diskwalificaties</h1>
         @else
 		<table class="table table-hover">
 			<tr>

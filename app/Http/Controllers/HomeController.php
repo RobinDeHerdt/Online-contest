@@ -26,8 +26,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $contestimage   = Contestimage::where('isUsed', false)->first();
-        
+        $contestimage = Contestimage::where('isUsed', false)->first();
+
         if(Winner::all()->count())
         {
             $isThereAWinner = true;
@@ -37,7 +37,13 @@ class HomeController extends Controller
             $winningcreation    = $winner->creation()->first();
             $winninguser        = $winningcreation->user()->first();
 
-            return view('home', ['contestimage' => $contestimage,'winningcreation' => $winningcreation,'winninguser' => $winninguser, 'isThereAWinner' => $isThereAWinner]);
+            return view('home', [
+                'winner'            => $winner,
+                'contestimage'      => $contestimage,
+                'winningcreation'   => $winningcreation,
+                'winninguser'       => $winninguser, 
+                'isThereAWinner'    => $isThereAWinner
+            ]);
         }
         else
         {
