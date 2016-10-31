@@ -27,11 +27,23 @@ class HomeController extends Controller
     public function index()
     {
         $contestimage   = Contestimage::where('isUsed', false)->first();
-        $winner         = Winner::orderBy('id', 'asc')->first();
+        
+        if(Winner::all()->count())
+        {
+            $isThereAWinner = true;
 
-        $winningcreation   = $winner->creation()->first();
-        $winninguser       = $winningcreation->user()->first();
+            $winner             = Winner::orderBy('id', 'asc')->first();
 
-        return view('home', ['contestimage' => $contestimage,'winningcreation' => $winningcreation,'winninguser' => $winninguser]);
+            $winningcreation    = $winner->creation()->first();
+            $winninguser        = $winningcreation->user()->first();
+
+            return view('home', ['contestimage' => $contestimage,'winningcreation' => $winningcreation,'winninguser' => $winninguser, 'isThereAWinner' => $isThereAWinner]);
+        }
+        else
+        {
+            $isThereAWinner = false;
+
+            return view('home', ['contestimage' => $contestimage, 'isThereAWinner' => $isThereAWinner]);
+        }
     }
 }

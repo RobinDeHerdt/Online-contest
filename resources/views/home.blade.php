@@ -22,6 +22,7 @@
                 <a href="/wedstrijd"><button type="button" class="btn-custom">Doe mee</button></a>
             </div>
             
+            @if ($isThereAWinner)
             <div class="wedstrijden-header">
                 <img src="img/pointing_hand_left.jpg">
                 <span>Winnaars</span>
@@ -35,6 +36,7 @@
                 <br>
                 <a href="/winnaars">Bekijk alle winnaars van deze wedstrijd</a>
             </div>
+            @endif
         </div>
     </div>
 </div>
