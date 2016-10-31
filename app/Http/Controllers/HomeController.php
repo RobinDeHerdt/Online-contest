@@ -32,7 +32,7 @@ class HomeController extends Controller
         {
             $isThereAWinner = true;
 
-            $winner             = Winner::orderBy('id', 'asc')->first();
+            $winner             = Winner::orderBy('id', 'desc')->first();
 
             $winningcreation    = $winner->creation()->first();
             $winninguser        = $winningcreation->user()->first();

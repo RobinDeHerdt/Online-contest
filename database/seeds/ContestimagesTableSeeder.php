@@ -12,13 +12,23 @@ class ContestimagesTableSeeder extends Seeder
     public function run()
     {
         DB::table('contestimages')->insert([
-            'image_url' => 'img/contests/week-2.jpg',
+            'image_url' => 'img/contests/week-1.jpg',
             'isUsed' => false,
         ]);
 
         DB::table('contestimages')->insert([
-            'image_url' => 'img/contests/week-1.jpg',
-            'isUsed' => true,
+            'image_url' => 'img/contests/week-2.jpg',
+            'isUsed' => false,
+        ]);
+
+         DB::table('contestimages')->insert([
+            'image_url' => 'img/contests/week-3.jpg',
+            'isUsed' => false,
+        ]);
+
+          DB::table('contestimages')->insert([
+            'image_url' => 'img/contests/week-4.jpg',
+            'isUsed' => false,
         ]);
     }
 }

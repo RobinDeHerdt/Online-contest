@@ -31,7 +31,8 @@ class ContestResults extends Mailable
      */
     public function build()
     {
-        return $this->from('robin.deherdt@student.kdg.be')
+        return $this->from('robindh95@gmail.com', 'Robin DH')
+        ->subject('Wedstrijdresultaten')
         ->view('emails.contestresults')
         ->with(['winner_id' => $this->user->id,
                 'winner_fname' => $this->user->first_name,
