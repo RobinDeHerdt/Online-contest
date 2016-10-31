@@ -51,9 +51,9 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'first_name' => 'required|max:255',
             'last_name' => 'required|max:255',
-            'date_of_birth' => 'required',
+            'date_of_birth' => 'required|date|before:today',
             'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6|confirmed',
+            'password' => 'required|min:3|confirmed',
         ]);
     }
 
@@ -71,7 +71,7 @@ class RegisterController extends Controller
             'date_of_birth' => $data['date_of_birth'],
             'email' => $data['email'],
             'ip_adress' => Request::ip(),
-            'isAdmin' => 0,
+            'isAdmin' => false,
             'password' => bcrypt($data['password']),
         ]);
     }

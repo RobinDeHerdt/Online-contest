@@ -11,6 +11,15 @@
         <span>Wedstrijdfoto uploaden</span>
         <img src="/img/pointing_hand_right.jpg">
     </div>
+    @if (count($errors) > 0)
+			    <div class="alert alert-danger">
+			        <ul>
+			            @foreach ($errors->all() as $error)
+			                <li>{{ $error }}</li>
+			            @endforeach
+			        </ul>
+			    </div>
+			@endif
 	{!! Form::open(array('class' => 'form-horizontal', 'files' => true))  !!}
 		{{ csrf_field() }}
 		 <div class="form-group">

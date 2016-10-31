@@ -11,9 +11,8 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Registratie</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/registreer') }}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
                         {{ csrf_field() }}
-
                         <div class="form-group{{ $errors->has('first_name') ? ' has-error' : '' }}">
                             <label for="first_name" class="col-md-4 control-label">Voornaam</label>
 

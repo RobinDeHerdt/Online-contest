@@ -21,6 +21,10 @@ class WedstrijdfotoController extends Controller
 
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'image'     => 'required|image',
+        ]);
+
     	$path = $request->image->store('img/contests', 'upload');
 
     	$contestimage = new Contestimage();
