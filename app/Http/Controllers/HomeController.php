@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Contestimage;
 
 class HomeController extends Controller
 {
@@ -24,6 +25,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $contestimage = Contestimage::where('isUsed', false)->first();
+        
+        return view('home', ['contestimage' => $contestimage]);
     }
 }

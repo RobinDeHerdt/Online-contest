@@ -228,6 +228,10 @@
 	margin-left:15%;
 }
 
+.padding-bottom {
+	padding-bottom: 80px;
+}
+
 @media (max-width: 1000px) {
   .creation-container {
   -moz-column-count:    3;

@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 
-
 use Response;
 use App\Http\Requests;
+use App\Contestimage;
 use App\Creation;
 use App\Vote;
 use Auth;
@@ -17,10 +17,10 @@ class WedstrijdController extends Controller
 {
     public function index()
     {
-    	$creations  = Creation::all();
-        $votes = Vote::all();
+        $creations      = Creation::where('isParticipating', true)->get();
+        $contestimage   = Contestimage::where('isUsed', false)->first();
 
-        return view('wedstrijd', ['creations' => $creations],['votes' => $votes]);
+        return view('wedstrijd', ['creations' => $creations],['contestimage' => $contestimage]);
     }
 
     public function store(Request $request)

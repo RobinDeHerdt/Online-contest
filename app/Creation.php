@@ -18,4 +18,9 @@ class Creation extends Model
     {
         return $this->hasMany('App\Vote');
     }
+
+    public function winner()
+    {
+        return $this->belongsTo('App\Winner');
+    }
 }

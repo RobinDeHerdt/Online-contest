@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Photoshop wedstrijd
+    Wedstrijd
 @endsection
 
 @section('content')
@@ -62,7 +62,7 @@
 		});
 	});
 </script>
-<div class="container col-md-10 col-md-offset-1">
+<div class="container col-md-10 col-md-offset-1 padding-bottom">
     <div class="row">
         <div class="wedstrijd-content">
         @if(Session::has('status'))
@@ -79,8 +79,7 @@
             </div>
 			<div class="original">
 	            <div class="original-container">
-	            <!-- HARD CODED, VERGEET NIET TE VERANDEREN -->
-	            	<img src="img/contests/week-1.jpg" alt="">
+	            	<img src="{{ $contestimage->image_url }}" alt="">
 	            </div>
 	            <div class="original-uitleg">
                 <h3>Werkwijze: </h3>
@@ -89,7 +88,7 @@
                 		Download de originele foto hier: 
 	                	<form action="/download" method="post">
 	  						<input type="hidden" name="_token" value="{{ csrf_token() }}">
-	  						<input type="hidden" value="/img/contests/week-1.jpg" name="file_url">
+	  						<input type="hidden" value="/{{ $contestimage->image_url }}" name="file_url">
 	  						<input type="submit" value="Download" id="btn-download">
 	  					</form>
   					</li>
