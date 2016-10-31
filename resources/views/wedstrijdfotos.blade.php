@@ -19,22 +19,15 @@
 				<th>ID</th>
 				<th>Foto</th>
 				<th>Werd gebruikt</th>
-				<th>Bewerken</th>
 				<th>Verwijderen</th>
 			</tr>
 			@foreach ($contestimages as $contestimage)
 			<tr>
 				<td>{{ $contestimage->id }}</td>
-				<td><a href="/{{ $contestimage->image_url }}">{{ $contestimage->image_url }}</a></td>
+				<td><a href="/{{ $contestimage->image_url }}">Link</a></td>
 				<td>{{($contestimage->isUsed ? "Ja" : "Nee")}} </td>
 				<td>
-					<form action="/administrator/update/{{$contestimage->id}}" method="POST">
-						<input type="hidden" name="_token" value="{{ csrf_token() }}">
-						<input type="submit" value="Edit">
-					</form>
-				</td>
-				<td>
-					<form action="/administrator/destroy/{{$contestimage->id}}" method="POST">
+					<form action="/administrator/wedstrijdfotos/destroy/{{$contestimage->id}}" method="POST">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 						<input type="submit" value="Delete">
 					</form>

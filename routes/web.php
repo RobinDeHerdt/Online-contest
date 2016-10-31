@@ -31,3 +31,4 @@ Route::post('/download' , 'WedstrijdController@download');
 Route::post('/administrator/destroy/{id}', 'AdminController@destroy');
 Route::post('/administrator/restore/{id}', 'AdminController@restore');
 Route::post('/administrator/wedstrijdfotos/create' , 'WedstrijdfotoController@store')->middleware('admin');
+Route::post('/administrator/wedstrijdfotos/destroy/{id}' , 'WedstrijdfotoController@destroy')->middleware('admin');

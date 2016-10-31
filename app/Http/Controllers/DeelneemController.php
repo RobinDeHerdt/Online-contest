@@ -20,14 +20,20 @@ class DeelneemController extends Controller
     {
     	$user_id = Auth::user()->id;
     	$creation = new Creation();
-   
-  		if (Creation::where('user_id', '=', $user_id)->exists())
-  		{
-  			$usercreations = Creation::where('user_id', '=', $user_id)->get();
+        
+      $usercreations = Creation::where('user_id', '=', $user_id)->get();
 
-  			// Get current date + periods and check if user has already submitted this period
+      if($usercreations->where('isParticipating', true)->count())
+      {
+
+      // }
+
+  		// if ()
+  		// {
+  			// $usercreations = Creation::where('user_id', '=', $user_id)->get();
+
   			
-  			dd('there is already a record with your name on it' . $usercreations);
+  			dd('You are already participating in this weeks contest. Chill out!' . $usercreations);
   		}
   		else 
   		{

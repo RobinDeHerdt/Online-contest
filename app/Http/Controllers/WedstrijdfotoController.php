@@ -30,4 +30,12 @@ class WedstrijdfotoController extends Controller
 
     	return redirect('/administrator/wedstrijdfotos');
     }
+
+    public function destroy($id)
+    {
+    	$contestimage = Contestimage::find($id);
+    	$contestimage->delete();
+
+    	return back();
+    }
 }

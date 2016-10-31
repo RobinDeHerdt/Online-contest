@@ -27,7 +27,7 @@
             <!-- Authentication Links -->
             @if (Auth::guest())
                 <li><a href="{{ url('/login') }}" class="nav-item">Login</a></li>
-                <li><a href="{{ url('/registreer') }}" class="nav-item">Registreer</a></li>
+                <li><a href="{{ url('/register') }}" class="nav-item">Registreer</a></li>
             @else
                 @if (Auth::user()->isAdmin)
                   <li><a href="{{ url('/administrator') }}" class="nav-item">Adminpaneel</a></li>

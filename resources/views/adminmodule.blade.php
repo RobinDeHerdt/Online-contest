@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-	<div class="container col-md-8 col-md-offset-2 padding-bottom">
+	<div class="col-md-10 col-md-offset-1 padding-bottom">
 	<a href="/administrator/wedstrijdfotos">Wedstrijdfoto's</a>
 		<div class="wedstrijden-header">
             <img src="img/pointing_hand_left.jpg">
@@ -25,7 +25,7 @@
 				<th>Creatie</th>
 				<th>Stemmen</th>
 				<th>Instuurdatum</th>
-				<th>Soft delete</th>
+				<th>Diskwalificeren</th>
 			</tr>
 			@foreach ($creations as $creation)
 			<tr>
@@ -34,13 +34,13 @@
 				<td>{{ $creation->user->email }}</td>
 				<td>{{ $creation->user->date_of_birth }}</td>
 				<td>{{ $creation->user->ip_adress }}</td>
-				<td><a href="{{ $creation->image_url }}">{{ $creation->image_url }}</a></td>
+				<td><a href="{{ $creation->image_url }}">Link</a></td>
 				<td>{{ $creation->votes->count() }}</td>
 				<td>{{ $creation->created_at }}</td>
 				<td>
 					<form action="/administrator/destroy/{{$creation->id}}" method="POST">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
-						<input type="submit" value="Delete">
+						<input type="submit" value="Diskwalificeer">
 					</form>
 				</td>
 			</tr>
@@ -75,13 +75,13 @@
 				<td>{{ $creation->user->email }}</td>
 				<td>{{ $creation->user->date_of_birth }}</td>
 				<td>{{ $creation->user->ip_adress }}</td>
-				<td><a href="{{ $creation->image_url }}">{{ $creation->image_url }}</a></td>
+				<td><a href="{{ $creation->image_url }}">Link</a></td>
 				<td>{{ $creation->votes->count() }}</td>
 				<td>{{ $creation->created_at }}</td>
 				<td>
 					<form action="/administrator/restore/{{$creation->id}}" method="POST">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
-						<input type="submit" value="Restore">
+						<input type="submit" value="Terugzetten">
 					</form>
 				</td>
 			</tr>
