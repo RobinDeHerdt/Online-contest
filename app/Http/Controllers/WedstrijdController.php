@@ -82,7 +82,7 @@ class WedstrijdController extends Controller
                     'status'        => 'failed_nologin',
             );
                 
-            $request->session()->flash('status', 'Je moet ingelogd zijn om te kunnen stemmen.');
+            $request->session()->flash('warningstatus', 'Je moet ingelogd zijn om te kunnen stemmen.');
 
             return Response::json($response);
         }

@@ -11,11 +11,7 @@ $(document).ready(function() {
 			type: "GET",
 	    	url: "/api/getuservotes",
 	    	success: function(data){
-	    		if(data.status == "nologin")
-	    		{
-	    			console.log("not logged in");
-	    		}
-	    		else 
+	    		if(!data.status == "nologin")
 	    		{
 	    			for (var i = 0; i < data.length; i++)
 		    		{
@@ -43,7 +39,7 @@ $(document).ready(function() {
 		      		}
 		      		else if (data.status == "failed_nologin")
 		      		{
-		      			window.location = "http://server.local/login"
+		      			window.location = "/login"
 		      		}
 		    	}
 			});

@@ -8,9 +8,9 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-             @if(Session::has('status'))
+             @if(Session::has('warningstatus'))
             <div class="alert alert-warning">
-                    {{Session::get('status')}}     
+                    {{Session::get('warningstatus')}}     
             </div>
             @endif
             <div class="panel panel-default">
