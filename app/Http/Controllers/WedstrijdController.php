@@ -17,7 +17,7 @@ class WedstrijdController extends Controller
 {
     public function index()
     {
-        $creations      = Creation::where('isParticipating', true)->paginate(8);
+        $creations      = Creation::where('isParticipating', true)->orderBy('created_at', 'desc')->paginate(10);
         $contestimage   = Contestimage::where('isUsed', false)->first();
 
         return view('wedstrijd', ['creations' => $creations],['contestimage' => $contestimage]);
