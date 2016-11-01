@@ -8,8 +8,7 @@
 <div class="container col-md-10 col-md-offset-1">
     <div class="row">
         <div class="wedstrijd-content">
-        	<a href="/wedstrijd">Terug naar de wedstrijdpagina</a>
-
+        	<a href="/wedstrijd" class="back-link">Terug naar de wedstrijdpagina</a>
            	<div class="wedstrijden-header">
                 <img src="img/pointing_hand_left.jpg">
                 <span>Deelnemen</span>

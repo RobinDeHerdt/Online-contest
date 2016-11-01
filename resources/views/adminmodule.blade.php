@@ -6,7 +6,7 @@
 
 @section('content')
 	<div class="col-md-10 col-md-offset-1 padding-bottom">
-	<a href="/administrator/wedstrijdfotos">Wedstrijdfoto's</a>
+	<a href="/administrator/wedstrijdfotos" class="back-link">Wedstrijdfoto's</a>
 		<div class="wedstrijden-header">
             <img src="img/pointing_hand_left.jpg">
             <span>Deelnemerslijst</span>

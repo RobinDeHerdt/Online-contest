@@ -28,6 +28,18 @@
 	padding: 0;
 }
 
+.back-link {
+	text-decoration: underline;
+	font-size: 18px;
+	color: black;
+	font-weight: 700;
+}
+
+.back-link:hover {
+	color: #ee090c !important;
+	transition: 0.2s ease-in-out color;
+}
+
 .btn-primary {
 	border-color: #ee090c;
 	background-color: #ee090c;

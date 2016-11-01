@@ -6,6 +6,7 @@
 
 @section('content')
 	<div class="container col-md-8 col-md-offset-2 padding-bottom">
+	<a href="/administrator/wedstrijdfotos" class="back-link">Terug naar wedstrijdfoto's</a>
 	<div class="wedstrijden-header">
         <img src="/img/pointing_hand_left.jpg">
         <span>Wedstrijdfoto uploaden</span>

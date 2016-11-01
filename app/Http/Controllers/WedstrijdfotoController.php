@@ -32,6 +32,8 @@ class WedstrijdfotoController extends Controller
     	$contestimage->isUsed 		= false; 
     	$contestimage->save();
 
+        $request->session()->flash('status', 'De foto werd succesvol geupload.');
+
     	return redirect('/administrator/wedstrijdfotos');
     }
 

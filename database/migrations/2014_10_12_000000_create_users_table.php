@@ -20,6 +20,9 @@ class CreateUsersTable extends Migration
             $table->date('date_of_birth');
             $table->string('email')->unique();
             $table->string('password');
+            $table->string('street_number')->nullable();
+            $table->string('postalcode')->nullable();
+            $table->string('city')->nullable();
             $table->string('ip_adress');
             $table->boolean('isAdmin')->default(false);
             $table->rememberToken();

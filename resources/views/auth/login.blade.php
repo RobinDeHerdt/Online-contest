@@ -47,7 +47,7 @@
                                     Login
                                 </button>
 
-                                <a class="btn btn-link" href="{{ url('/registreer') }}">
+                                <a class="btn btn-link" href="{{ url('/register') }}">
                                     Nog geen account? Klik hier om te registreren.
                                 </a>
                             </div>
