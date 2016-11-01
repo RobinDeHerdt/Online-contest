@@ -18,12 +18,12 @@ class IsAdmin
         if(!empty($request->user()))
         {
             if (! $request->user()->isAdmin) {
-                abort(403, 'Unauthorized action.');
+                abort(403, 'Unauthorized.');
             }
         }
         else 
         {
-             abort(403, 'Unauthorized!!!');
+             abort(403, 'Unauthorized.');
         }
         
 

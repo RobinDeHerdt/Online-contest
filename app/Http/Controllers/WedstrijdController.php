@@ -59,7 +59,7 @@ class WedstrijdController extends Controller
 
                 $response = array(
                     'status'        => 'success',
-                    'votecount'     => $votecount,
+                    'votecount'     => $votecount + 1,
                 );
 
                 return Response::json($response);

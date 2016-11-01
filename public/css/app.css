@@ -223,7 +223,8 @@ table td {
 .votecontainer {
 	padding:2px;
 	position:relative;
-	top: -35px;
+	bottom: 35px;
+	left: 5px;
 	width: 17%;
 	height: 50%;
 	background-color: white;

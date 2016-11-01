@@ -64,12 +64,12 @@
 				@foreach ($creations as $creation)
 						<div class="grid-item">
 							<a href="{{$creation->image_url}}" data-lightbox="images" data-title="'{{$creation->description}}' door {{ $creation->user->first_name . ' ' . $creation->user->last_name}}"><img src="{{$creation->image_url}}" alt=""></a>
-							<div class="votecontainer">
-								<div class="votecount-container">
-									<p class="votecount" id="votecount_id_{{$creation->id}}">{{ $creation->votes()->count()}}</p>
+								<div class="votecontainer">
+									<div class="votecount-container">
+										<p class="votecount" id="votecount_id_{{$creation->id}}">{{ $creation->votes()->count()}}</p>
+									</div>
+									<img src="img/upvote-2.png" id="{{$creation->id}}" class="thumbsup">
 								</div>
-								<img src="img/upvote-2.png" id="{{$creation->id}}" class="thumbsup">
-							</div>
 						</div>
 				@endforeach
 			@else

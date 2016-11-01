@@ -7,11 +7,17 @@
 });
 
 $(document).ready(function() {
+		$.ajaxSetup({
+	        headers: {
+	            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+	        }
+	    });
+
 		$.ajax({
 			type: "GET",
 	    	url: "/api/getuservotes",
 	    	success: function(data){
-	    		if(!data.status == "nologin")
+	    		if(data.status != "nologin")
 	    		{
 	    			for (var i = 0; i < data.length; i++)
 		    		{
@@ -23,6 +29,7 @@ $(document).ready(function() {
 
     	$( ".thumbsup" ).click(function(event) {
     		var id = event.target.id;
+
   			$.ajax({
   				type: "POST",
 		    	url: "/wedstrijd",
@@ -32,8 +39,7 @@ $(document).ready(function() {
 		    	success: function(data){
 					if(data.status == "success")
 		      		{
-		      			var count = $("#votecount_id_" + id).text();
-		      			count++;
+		      			var count = data.votecount;
 		      			$("#votecount_id_" + id).text(count);
 		      			$("#" + id).attr("src","img/upvote-3.png");
 		      		}

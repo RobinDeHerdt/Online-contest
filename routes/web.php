@@ -11,8 +11,6 @@
 |
 */
 
-
-
 Auth::routes();
 
 // Public routes
@@ -22,7 +20,8 @@ Route::get('/api/getuservotes' , 'WedstrijdController@sendUserVotes');
 
 // Auth routes
 Route::get('/deelnemen', 'DeelneemController@index')->middleware('auth');
-Route::post('/deelnemen', 'DeelneemController@store')->middleware('auth');
+
+Route::post('/deelnemen', 'DeelneemController@store');
 Route::post('/wedstrijd' , 'WedstrijdController@store');
 Route::post('/download' , 'WedstrijdController@download');
 
@@ -33,5 +32,5 @@ Route::get('/administrator/wedstrijdfotos/create' , 'WedstrijdfotoController@cre
 
 Route::post('/administrator/destroy/{id}', 'AdminController@destroy');
 Route::post('/administrator/restore/{id}', 'AdminController@restore');
-Route::post('/administrator/wedstrijdfotos/create' , 'WedstrijdfotoController@store')->middleware('admin');
-Route::post('/administrator/wedstrijdfotos/destroy/{id}' , 'WedstrijdfotoController@destroy')->middleware('admin');
+Route::post('/administrator/wedstrijdfotos/create' , 'WedstrijdfotoController@store');
+Route::post('/administrator/wedstrijdfotos/destroy/{id}' , 'WedstrijdfotoController@destroy');
