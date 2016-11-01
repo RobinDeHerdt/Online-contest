@@ -6,12 +6,14 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Creation;
+use App\Winner;
 
 
 class AdminController extends Controller
 {
     public function index()
     {
+        // Display max 15 deelnemers op 1 pagina
     	$creations  			= Creation::paginate(15);
     	$softDeletedCreations 	= Creation::onlyTrashed()->get();
 
@@ -20,8 +22,16 @@ class AdminController extends Controller
 
     public function destroy($id)
     {
-    	$creation = Creation::find($id);
-    	$creation->delete();
+    	$creation  = Creation::find($id);
+        $creation->delete();
+
+        // Check of de te verwijderen creatie ooit gewonnen heeft, zo ja -> delete van winnaarstabel
+        $winner    = Winner::where('creation_id', $id);
+
+        if($winner)
+        {
+            $winner->delete();
+        }
 
     	return back();
     }
@@ -30,6 +40,14 @@ class AdminController extends Controller
     {
     	$creation = Creation::onlyTrashed()->where('id', $id);
     	$creation->restore();
+
+        // Check of de te restoren creatie ooit gewonnen heeft, zo ja -> restore in winnaarstabel
+        $winner = Winner::onlyTrashed()->where('creation_id', $id);
+
+        if ($winner)
+        {
+            $winner->restore();
+        }
 
     	return back();
     }

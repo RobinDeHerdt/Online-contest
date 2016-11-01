@@ -18,6 +18,7 @@ class CreateWinnersTable extends Migration
             $table->integer('creation_id')->unsigned();
             $table->foreign('creation_id')->references('id')->on('creations');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

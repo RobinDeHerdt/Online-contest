@@ -17,35 +17,45 @@ class WedstrijdController extends Controller
 {
     public function index()
     {
-        $creations      = Creation::where('isParticipating', true)->orderBy('created_at', 'desc')->paginate(10);
         $contestimage   = Contestimage::where('isUsed', false)->first();
 
-        return view('wedstrijd', ['creations' => $creations],['contestimage' => $contestimage]);
+        if($contestimage)
+        {
+            $creations      = Creation::where('isParticipating', true)->orderBy('created_at', 'desc')->paginate(10);
+            return view('wedstrijd', ['creations' => $creations],['contestimage' => $contestimage]);
+        }
+        else
+        {
+            return redirect('/')->with('failedstatus', 'Deze wedstrijd is op dit moment niet actief.');
+        }
     }
 
     public function store(Request $request)
     {
         $creation_id = $request['creation_id'];
 
+        // Check of user ingelogd is
         if(Auth::user())
         {
+            // Gebruiker is ingelogd
             $user_id = Auth::user()->id;
 
-            $result = DB::table('votes')
-            ->where('creation_id', '=', $creation_id)
-            ->where('user_id', '=', Auth::user()->id)
-            ->exists();
+            $userHasVotedForThis = DB::table('votes')
+                ->where('creation_id', '=', $creation_id)
+                ->where('user_id', '=', $user_id)
+                ->exists();
 
-            if (!$result) 
+            $votecount = Vote::where('creation_id', '=', $creation_id)->count();
+
+            if (!$userHasVotedForThis) 
             {
+                // User heeft nog niet gestemd op deze creatie
                 $vote = new Vote();
 
                 $vote->user_id      = $user_id;
                 $vote->creation_id  = $creation_id;
 
                 $vote->save();
-
-                $votecount = Vote::where('creation_id', '=', $creation_id)->count();
 
                 $response = array(
                     'status'        => 'success',
@@ -56,8 +66,7 @@ class WedstrijdController extends Controller
             } 
             else 
             {
-                $votecount = Vote::where('creation_id', '=', $creation_id)->count();
-
+                // User heeft al gestemd op deze creatie
                 $response = array(
                     'status'        => 'failed',
                     'votecount'     => $votecount,
@@ -68,11 +77,12 @@ class WedstrijdController extends Controller
         }
         else 
         {
+            // Als er een gebruiker niet ingelogd is
             $response = array(
                     'status'        => 'failed_nologin',
             );
                 
-            $request->session()->flash('status', '');
+            $request->session()->flash('status', 'Je moet ingelogd zijn om te kunnen stemmen.');
 
             return Response::json($response);
         }

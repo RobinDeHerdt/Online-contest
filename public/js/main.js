@@ -9,7 +9,7 @@
 $(document).ready(function() {
 		$.ajax({
 			type: "GET",
-	    	url: "/getuservotes",
+	    	url: "/api/getuservotes",
 	    	success: function(data){
 	    		if(data.status == "nologin")
 	    		{

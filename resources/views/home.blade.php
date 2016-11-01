@@ -7,7 +7,12 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-8 col-md-offset-2">           
+            @if(Session::has('failedstatus'))
+            <div class="alert alert-danger">
+                    {{Session::get('failedstatus')}}       
+            </div>
+            @endif
             <div class="wedstrijden-header">
                 <img src="img/pointing_hand_left.jpg">
                 <span>Wedstrijden</span>

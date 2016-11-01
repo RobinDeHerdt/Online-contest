@@ -51,7 +51,7 @@
                 <br>
                 <p>Let op! Je kan maar één keer deelnemen per week.</p>
                 <a href="/deelnemen"><button type="button" class="btn-custom btn-custom-wedstrijd">Stuur hier jouw creatie in!</button></a>
-                <p id="stemoproep">Of stem hieronder op je favoriete creaties!</p>
+                <p id="stemoproep">En/of stem hieronder op je favoriete creaties!</p>
             	</div>
             </div>
            <div class="wedstrijden-header">
