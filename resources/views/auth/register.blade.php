@@ -40,7 +40,6 @@
                                 @endif
                             </div>
                         </div>
-
                         <div class="form-group{{ $errors->has('date_of_birth') ? ' has-error' : '' }}">
                             <label for="date_of_birth" class="col-md-4 control-label">Geboortedatum</label>
 
@@ -54,7 +53,6 @@
                                 @endif
                             </div>
                         </div>
-
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label for="email" class="col-md-4 control-label">E-mail</label>
 
@@ -64,6 +62,46 @@
                                 @if ($errors->has('email'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="form-group{{ $errors->has('street_number') ? ' has-error' : '' }}">
+                            <label for="street_number" class="col-md-4 control-label">Straat en nummer</label>
+
+                            <div class="col-md-6">
+                                <input id="street_number" type="text" class="form-control" name="street_number" value="{{ old('street_number') }}" required autofocus>
+
+                                @if ($errors->has('street_number'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('street_number') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-group{{ $errors->has('postalcode') ? ' has-error' : '' }}">
+                            <label for="postalcode" class="col-md-4 control-label">Postcode</label>
+
+                            <div class="col-md-6">
+                                <input id="postalcode" type="text" class="form-control" name="postalcode" value="{{ old('postalcode') }}" required autofocus>
+
+                                @if ($errors->has('postalcode'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('postalcode') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-group{{ $errors->has('city') ? ' has-error' : '' }}">
+                            <label for="city" class="col-md-4 control-label">Plaats</label>
+
+                            <div class="col-md-6">
+                                <input id="city" type="text" class="form-control" name="city" value="{{ old('city') }}" required autofocus>
+
+                                @if ($errors->has('city'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('city') }}</strong>
                                     </span>
                                 @endif
                             </div>

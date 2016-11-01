@@ -30,6 +30,7 @@ class HomeController extends Controller
 
         if(Winner::all()->count())
         {
+            $allwinners = Winner::all();
             $isThereAWinner = true;
 
             $winner             = Winner::orderBy('id', 'desc')->first();
@@ -38,6 +39,7 @@ class HomeController extends Controller
             $winninguser        = $winningcreation->user()->first();
 
             return view('home', [
+                'allwinners'        => $allwinners,
                 'winner'            => $winner,
                 'contestimage'      => $contestimage,
                 'winningcreation'   => $winningcreation,

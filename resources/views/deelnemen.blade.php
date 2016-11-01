@@ -25,7 +25,7 @@
 			@endif
            	{!! Form::open(array('class' => 'form-horizontal', 'files' => true))  !!}
 				{{ csrf_field() }}
-				 <div class="form-group">
+				<div class="form-group">
 					{{ Form::label('title', 'Titel van je creatie', ['class' => 'control-label col-sm-2']) }}
 					<div class="col-sm-10">
 						{{ Form::text('title', '', ['class' => 'form-control']) }}

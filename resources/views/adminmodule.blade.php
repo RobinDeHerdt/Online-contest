@@ -13,7 +13,7 @@
             <img src="img/pointing_hand_right.jpg">
         </div>
         @if (!$creations->count())
-			<h1>Er zijn geen deelnemers</h1>
+			<h3 class="centertext">Er zijn geen deelnemers</h3>
         @else
 		<table class="table table-hover">
 			<tr>
@@ -24,7 +24,7 @@
 				<th>IP-adres</th> 
 				<th>Creatie</th>
 				<th>Stemmen</th>
-				<th>Instuurdatum</th>
+				<th>Adres</th>
 				<th>Diskwalificeren</th>
 			</tr>
 			@foreach ($creations as $creation)
@@ -36,7 +36,7 @@
 				<td>{{ $creation->user->ip_adress }}</td>
 				<td><a href="{{ $creation->image_url }}">Link</a></td>
 				<td>{{ $creation->votes->count() }}</td>
-				<td>{{ $creation->created_at }}</td>
+				<td>{{ $creation->user->street_number . " " . $creation->user->postalcode . " " . $creation->user->city }}</td>
 				<td>
 					<form action="/administrator/destroy/{{$creation->id}}" method="POST">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -55,7 +55,7 @@
             <img src="img/pointing_hand_right.jpg">
         </div>
         @if (!$softDeletedCreations->count())
-			<h1>Er zijn geen diskwalificaties</h1>
+			<h3 class="centertext">Er zijn geen diskwalificaties</h3>
         @else
 		<table class="table table-hover">
 			<tr>

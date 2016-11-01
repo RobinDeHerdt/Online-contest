@@ -33,7 +33,11 @@
                 <strong>{{ $winninguser->first_name . " " . $winninguser->last_name . " met " . "'" .$winningcreation->description . "'"}}</strong>
                 <br>
                 <br>
-                <a href="/winnaars">Bekijk alle winnaars van deze wedstrijd</a>
+                <h4>Alle winnaars van de voorbije weken:</h4>
+                @foreach ($allwinners as $winner)
+                   {{ "Week " . $winner->id . ":  " . $winner->creation->user->first_name . " " . $winner->creation->user->last_name}} 
+                   <br>
+                @endforeach
             </div>
             @endif
         </div>

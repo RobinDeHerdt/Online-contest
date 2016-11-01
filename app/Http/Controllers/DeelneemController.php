@@ -19,8 +19,8 @@ class DeelneemController extends Controller
     public function store(Request $request)
     {
       $this->validate($request, [
-        'title'     => 'required|max:255',
-        'image'     => 'required|image',
+        'title'         => 'required|max:255',
+        'image'         => 'required|image',
       ]);
 
       $user_id = Auth::user()->id;
@@ -36,6 +36,10 @@ class DeelneemController extends Controller
   		}
   		else 
   		{
+        $user = User::find($user_id);
+        $user->ip_adress      = request()->ip();
+        $user->save();
+
   			$path = $request->image->store('img/creaties', 'upload');
 
 	    	$creation->description  = $request->title;

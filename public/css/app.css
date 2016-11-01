@@ -2,6 +2,15 @@
 	font-family: sans-serif;
 }
 
+.centertext {
+	text-align: center;
+}
+
+table td {
+	word-break: break-all;
+	word-wrap:break-word;
+}
+
 .col-md-12 {
 	padding: 0;
 }
@@ -95,6 +104,10 @@
 	margin-bottom: 100px;
 	border: dotted 2px black;
 	padding: 10px;
+}
+
+.content img{
+	width: 100%;
 }
 
 .btn-custom {
