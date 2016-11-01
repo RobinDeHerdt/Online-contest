@@ -46,6 +46,7 @@
 			</tr>
 			@endforeach
 		</table>
+		{{ $creations->links() }}
 		@endif
 
 		<div class="wedstrijden-header">

@@ -234,6 +234,10 @@
 	padding-bottom: 80px;
 }
 
+.pagination span{
+	z-index: 0 !important;
+}
+
 @media (max-width: 1000px) {
   .creation-container {
   -moz-column-count:    3;

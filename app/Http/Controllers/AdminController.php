@@ -12,7 +12,7 @@ class AdminController extends Controller
 {
     public function index()
     {
-    	$creations  			= Creation::all();
+    	$creations  			= Creation::paginate(15);
     	$softDeletedCreations 	= Creation::onlyTrashed()->get();
 
     	return view('adminmodule', ['creations' => $creations], ['softDeletedCreations' => $softDeletedCreations]);

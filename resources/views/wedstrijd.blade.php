@@ -74,6 +74,7 @@
 				<h3>Er zijn nog geen inzendingen.</h3>
 			@endif
 			</div>
+			{{ $creations->links() }}
         </div>
     </div>
 </div>
