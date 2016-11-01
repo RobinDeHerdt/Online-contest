@@ -5,8 +5,11 @@
 @endsection
 
 @section('content')
+<link href="/css/lightbox.min.css" rel="stylesheet">
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://unpkg.com/masonry-layout@4.1/dist/masonry.pkgd.js"></script>
+<script src="/js/lightbox.min.js"></script>
 <script src="/js/main.js"></script>
 
 <div class="container col-md-10 col-md-offset-1 padding-bottom">
@@ -58,7 +61,7 @@
 			@if(!$creations->isEmpty())
 				@foreach ($creations as $creation)
 						<div class="grid-item">
-							<img src="{{$creation->image_url}}" alt="{{$creation->description}}">
+							<a href="{{$creation->image_url}}" data-lightbox="image-1" data-title="{{$creation->description}}"><img src="{{$creation->image_url}}" alt=""></a>
 							<div class="votecontainer">
 								<div class="votecount-container">
 									<p class="votecount" id="votecount_id_{{$creation->id}}">{{ $creation->votes()->count()}}</p>
