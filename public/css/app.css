@@ -263,6 +263,10 @@ table td {
 	z-index: 0 !important;
 }
 
+.admin-tabel {
+	padding: 0 50px 0 50px !important;
+}
+
 @media (max-width: 1000px) {
   .creation-container {
   -moz-column-count:    3;

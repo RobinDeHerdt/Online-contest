@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-	<div class="col-md-10 col-md-offset-1 padding-bottom">
+	<div class="col-md-12 padding-bottom admin-tabel">
 	<a href="/administrator/wedstrijdfotos" class="back-link">Wedstrijdfoto's</a>
 		<div class="wedstrijden-header">
             <img src="img/pointing_hand_left.jpg">
@@ -21,10 +21,10 @@
 				<th>Achternaam</th>
 				<th>Email</th>
 				<th>Geboortedatum</th>
+				<th>Adres</th>
 				<th>IP-adres</th> 
 				<th>Creatie</th>
 				<th>Stemmen</th>
-				<th>Adres</th>
 				<th>Diskwalificeren</th>
 			</tr>
 			@foreach ($creations as $creation)
@@ -33,10 +33,10 @@
 				<td>{{ $creation->user->last_name }}</td>
 				<td>{{ $creation->user->email }}</td>
 				<td>{{ $creation->user->date_of_birth }}</td>
+				<td>{{ $creation->user->street_number . ", " . $creation->user->postalcode . "  " . $creation->user->city }}</td>
 				<td>{{ $creation->user->ip_adress }}</td>
 				<td><a href="{{ $creation->image_url }}">Link</a></td>
 				<td>{{ $creation->votes->count() }}</td>
-				<td>{{ $creation->user->street_number . " " . $creation->user->postalcode . " " . $creation->user->city }}</td>
 				<td>
 					<form action="/administrator/destroy/{{$creation->id}}" method="POST">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -63,10 +63,10 @@
 				<th>Achternaam</th>
 				<th>Email</th>
 				<th>Geboortedatum</th>
+				<th>Adres</th>
 				<th>IP-adres</th> 
 				<th>Creatie</th>
 				<th>Stemmen</th>
-				<th>Instuurdatum</th>
 				<th>Terugzetten</th>
 			</tr>
 			@foreach ($softDeletedCreations as $creation)
@@ -75,10 +75,10 @@
 				<td>{{ $creation->user->last_name }}</td>
 				<td>{{ $creation->user->email }}</td>
 				<td>{{ $creation->user->date_of_birth }}</td>
+				<td>{{ $creation->user->street_number . ", " . $creation->user->postalcode . " " . $creation->user->city }}</td>
 				<td>{{ $creation->user->ip_adress }}</td>
 				<td><a href="{{ $creation->image_url }}">Link</a></td>
 				<td>{{ $creation->votes->count() }}</td>
-				<td>{{ $creation->created_at }}</td>
 				<td>
 					<form action="/administrator/restore/{{$creation->id}}" method="POST">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">

@@ -48,6 +48,8 @@
   					<li>Bewerk de foto op een creatieve manier. Je mag elementen van andere afbeeldingen gebruiken, zo lang een deel van de originele foto er maar in te vinden is.</li>
   					<li>Upload de foto door op de rode knop hieronder te klikken.</li>
                 </ol>
+                <br>
+                <p>Let op! Je kan maar één keer deelnemen per week.</p>
                 <a href="/deelnemen"><button type="button" class="btn-custom btn-custom-wedstrijd">Stuur hier jouw creatie in!</button></a>
                 <p id="stemoproep">Of stem hieronder op je favoriete creaties!</p>
             	</div>

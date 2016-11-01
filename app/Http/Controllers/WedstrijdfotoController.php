@@ -9,9 +9,10 @@ class WedstrijdfotoController extends Controller
 {
     public function index()
     {
-    	$contestimages = Contestimage::all();
+    	$contestimages  = Contestimage::all();
+        $activeImage    = Contestimage::where('isUsed', false)->first(); 
 
-    	return view('wedstrijdfotos', ['contestimages' => $contestimages]);
+    	return view('wedstrijdfotos', ['contestimages' => $contestimages, 'activeImage' => $activeImage]);
     }
 
     public function create()
