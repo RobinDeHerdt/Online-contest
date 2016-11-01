@@ -13,32 +13,37 @@
                 <span>Wedstrijden</span>
                 <img src="img/pointing_hand_right.jpg">
             </div>
+            @if ($contestIsLive)
             <div class="content">
-                <img src="{{ $contestimage->image_url }}" alt="" class="img-responsive">
+                <img src="{{ $contestImage->image_url }}" class="img-responsive">
                 <h3>Win een jaarabonnement op humo!</h3>   
                 <p>Bewerk de gegeven foto op een creatieve manier. Je mag elementen van andere afbeeldingen gebruiken, zo lang een deel van de originele foto er maar in te vinden is.</p>
                 <p>De creatie met het meeste stemmen van de humo-lezers wint een jaarabonnement op Humo!</p>
                 <br>
                 <a href="/wedstrijd"><button type="button" class="btn-custom">Doe mee</button></a>
             </div>
-            @if ($isThereAWinner)
+            @else
+            <div class="content">
+                <h3 class="centertext">Er zijn geen wedstrijden op dit moment.</h3> 
+            </div>
+            @endif
             <div class="wedstrijden-header">
                 <img src="img/pointing_hand_left.jpg">
                 <span>Winnaars</span>
                 <img src="img/pointing_hand_right.jpg">
             </div>
-            <div class="content">
-                <img src="{{ $winningcreation->image_url }}" class="img-responsive" style="width:100%">
-                <h3>Winnaar week {{ $winner->id}}</h3>
-                <strong>{{ $winninguser->first_name . " " . $winninguser->last_name . " met " . "'" .$winningcreation->description . "'"}}</strong>
-                <br>
-                <br>
-                <h4>Alle winnaars van de voorbije weken:</h4>
-                @foreach ($allwinners as $winner)
-                   {{ "Week " . $winner->id . ":  " . $winner->creation->user->first_name . " " . $winner->creation->user->last_name}} 
-                   <br>
+            @if ($isThereAWinner)
+                @foreach ($allWinners as $winner)
+                <div class="content">
+                    <img src="{{ $winner->creation->image_url }}" class="img-responsive" style="width:100%">
+                    <h3>Winnaar week {{ $winner->id}}</h3>
+                    <strong>{{ $winner->creation->user->first_name . " " . $winner->creation->user->last_name . " met " . "'" . $winner->creation->description . "'"}}</strong>
+                </div>
                 @endforeach
-            </div>
+            @else
+            <div class="content">
+                <h3 class="centertext">Er zijn (nog) geen winnaars.</h3> 
+            </div>    
             @endif
         </div>
     </div>

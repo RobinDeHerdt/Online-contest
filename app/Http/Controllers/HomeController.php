@@ -28,32 +28,41 @@ class HomeController extends Controller
     {
         $contestimage = Contestimage::where('isUsed', false)->first();
 
-        if(Winner::all()->count())
+        if($contestimage)
         {
-            $allwinners = Winner::all();
+            // Wanneer de wedstrijd gewoon doorgaat
+            $contestIsLive = true;
+        } 
+        else
+        {
+            // Wanneer de wedstrijd beindigd wordt.
+            $contestIsLive = false;
+        }
+
+        $allWinners = Winner::all();
+
+        if($allWinners->count())
+        {
+            // Er zijn winnaars
             $isThereAWinner = true;
 
-            $winner             = Winner::orderBy('id', 'desc')->first();
-
-            $winningcreation    = $winner->creation()->first();
-            $winninguser        = $winningcreation->user()->first();
-
             return view('home', [
-                'allwinners'        => $allwinners,
-                'winner'            => $winner,
-                'contestimage'      => $contestimage,
-                'winningcreation'   => $winningcreation,
-                'winninguser'       => $winninguser, 
-                'isThereAWinner'    => $isThereAWinner
+                'allWinners'        => $allWinners,
+                'contestImage'      => $contestimage,
+                'isThereAWinner'    => $isThereAWinner,
+                'contestIsLive'     => $contestIsLive,
             ]);
         }
         else
         {
+            // Er zijn nog geen winnaars
             $isThereAWinner = false;
 
-            return view('home', ['contestimage' => $contestimage, 'isThereAWinner' => $isThereAWinner]);
+            return view('home', [
+                'contestImage'      => $contestimage,
+                'isThereAWinner'    => $isThereAWinner,
+                'contestIsLive'     => $contestIsLive,
+            ]);
         }
-
-        // Elsif check if there is a contest image, zo niet, wedstrijd afgelopen (geen link meer naar de wedstrijdpagina)
     }
 }
