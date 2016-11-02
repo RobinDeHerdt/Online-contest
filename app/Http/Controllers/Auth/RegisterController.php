@@ -49,14 +49,15 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'first_name'    => 'required|max:255',
-            'last_name'     => 'required|max:255',
+            'first_name'    => array('required','max:255','regex:/(^[A-Za-z0-9 -]+$)+/'),
+            'last_name'     => array('required','max:255','regex:/(^[A-Za-z0-9 -]+$)+/'),
             'email'         => 'required|email|max:255|unique:users',
             'password'      => 'required|min:3|confirmed',
             'date_of_birth' => 'required|date|before:today',
-            'street_number' => 'required|max:255',
-            'postalcode'    => 'required|max:10',
-            'city'          => 'required|max:255',
+            'street_number' => array('required','max:255','regex:/(^[A-Za-z0-9 -]+$)+/'),
+            'postalcode'    => array('required','max:10','regex:/(^[A-Za-z0-9 -]+$)+/'),
+            'ip_adress'     => 'required|ip',
+            'city'          => array('required','max:255','regex:/(^[A-Za-z0-9 -]+$)+/'),
         ]);
     }
 

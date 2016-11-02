@@ -92,7 +92,7 @@ class WedstrijdController extends Controller
     {
         if(Auth::user())
         {
-            $response = DB::table('votes')->where('user_id', '=', Auth::user()->id)->get();
+            $response = Vote::where('user_id', '=', Auth::user()->id)->get();
         }
         else
         {

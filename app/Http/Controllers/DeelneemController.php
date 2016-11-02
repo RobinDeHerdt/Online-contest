@@ -18,8 +18,9 @@ class DeelneemController extends Controller
 
     public function store(Request $request)
     {
+      // Regex: laat alleen letters en cijfers door, geen '<' tags bvb.
       $this->validate($request, [
-        'title'         => 'required|max:255',
+        'title'         => 'required|max:255|regex:/(^[A-Za-z0-9 -]+$)+/',
         'image'         => 'required|image',
       ]);
 
@@ -36,6 +37,9 @@ class DeelneemController extends Controller
   		}
   		else 
   		{
+
+        dd($request);
+
         $user = User::find($user_id);
         $user->ip_adress      = request()->ip();
         $user->save();

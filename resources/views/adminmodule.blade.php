@@ -27,8 +27,8 @@
 				<th>Stemmen</th>
 				<th>Diskwalificeren</th>
 			</tr>
-			@foreach ($creations as $creation)
-			<tr>
+			@foreach ($creations->sortBy('votes')->reverse() as $creation)
+			<tr class="{{ $winners->where('creation_id', $creation->id)->count()  ? 'success' : '' }}">
 				<td>{{ $creation->user->first_name }}</td>
 				<td>{{ $creation->user->last_name }}</td>
 				<td>{{ $creation->user->email }}</td>

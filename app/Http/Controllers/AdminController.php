@@ -15,9 +15,14 @@ class AdminController extends Controller
     {
         // Display max 15 deelnemers op 1 pagina
     	$creations  			= Creation::paginate(15);
+        $winners                = Winner::all();
     	$softDeletedCreations 	= Creation::onlyTrashed()->get();
 
-    	return view('adminmodule', ['creations' => $creations], ['softDeletedCreations' => $softDeletedCreations]);
+    	return view('adminmodule', [
+            'creations' => $creations, 
+            'softDeletedCreations' => $softDeletedCreations,
+            'winners' => $winners,
+        ]);
     }
 
     public function destroy($id)
