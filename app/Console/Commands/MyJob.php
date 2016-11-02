@@ -3,6 +3,8 @@
 namespace App\Console\Commands;
 use Illuminate\Mail\Mailable;
 use Illuminate\Console\Command;
+
+use Excel;
 use App\User;
 use App\Winner;
 use App\Creation;
@@ -63,7 +65,16 @@ class MyJob extends Command
 
             echo "Winner picked\n";
 
-            // \Mail::to("robindh95@gmail.com")->send(new ContestResults($winner, $user));
+            Excel::create('deelnemers', function($excel) {
+                $excel->setTitle('deelnemerslijst');
+                $excel->sheet('Deelnemers', function($sheet) {
+                    $sheet->fromModel(User::all());
+                });
+            })->store('xlsx');
+
+            echo "Excel exported\n";
+
+            \Mail::to("robindh95@gmail.com")->send(new ContestResults($winner, $user));
 
             echo "Email with results sent\n";
 

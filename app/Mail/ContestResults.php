@@ -6,6 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Storage;
 
 use App\User;
 
@@ -31,12 +32,15 @@ class ContestResults extends Mailable
      */
     public function build()
     {
-        return $this->from('robindh95@gmail.com', 'Robin DH')
+        $storagePath       = storage_path();
+
+        return $this->from('robindh95@gmail.com', 'Humo')
         ->subject('Wedstrijdresultaten')
         ->view('emails.contestresults')
         ->with(['winner_id' => $this->user->id,
                 'winner_fname' => $this->user->first_name,
                 'winner_lname' => $this->user->last_name,
-        ]);
+        ])
+        ->attach($storagePath . "/exports/deelnemers.xlsx");
     }
 }
