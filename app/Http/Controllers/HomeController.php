@@ -32,6 +32,9 @@ class HomeController extends Controller
         {
             // Wanneer de wedstrijd gewoon doorgaat
             $contestIsLive = true;
+
+            $current_date   = date("Y-m-d");
+            $next_wednesday = date('Y-m-d', strtotime("next wednesday", strtotime($current_date)));
         } 
         else
         {
@@ -51,6 +54,7 @@ class HomeController extends Controller
                 'contestImage'      => $contestimage,
                 'isThereAWinner'    => $isThereAWinner,
                 'contestIsLive'     => $contestIsLive,
+                'next_wednesday'    => $next_wednesday,
             ]);
         }
         else
@@ -62,6 +66,7 @@ class HomeController extends Controller
                 'contestImage'      => $contestimage,
                 'isThereAWinner'    => $isThereAWinner,
                 'contestIsLive'     => $contestIsLive,
+                'next_wednesday'    => $next_wednesday,
             ]);
         }
     }

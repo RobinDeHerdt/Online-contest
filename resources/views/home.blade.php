@@ -24,6 +24,7 @@
                 <h3>Win een jaarabonnement op humo!</h3>   
                 <p>Bewerk de gegeven foto op een creatieve manier. Je mag elementen van andere afbeeldingen gebruiken, zo lang een deel van de originele foto er maar in te vinden is.</p>
                 <p>De creatie met het meeste stemmen van de humo-lezers wint een jaarabonnement op Humo!</p>
+                <p>Deze wedstrijd loopt af om 12.00u op woensdag {{ $next_wednesday }}.</p>
                 <br>
                 <a href="/wedstrijd"><button type="button" class="btn-custom">Doe mee</button></a>
             </div>
