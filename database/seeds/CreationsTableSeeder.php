@@ -41,22 +41,17 @@ class CreationsTableSeeder extends Seeder
             'user_id' => '14',
         ]);
 
-        DB::table('creations')->insert([
-            'description' => 'Again!?',
-            'image_url' => 'img/creaties/6.jpg',
-            'user_id' => '32',
-        ]);
 
         DB::table('creations')->insert([
             'description' => 'Beard contest',
-            'image_url' => 'img/creaties/7.jpg',
+            'image_url' => 'img/creaties/6.jpg',
             'user_id' => '46',
         ]);
 
 
         DB::table('creations')->insert([
             'description' => '8.5',
-            'image_url' => 'img/creaties/8.png',
+            'image_url' => 'img/creaties/7.png',
             'user_id' => '51',
         ]);
     }

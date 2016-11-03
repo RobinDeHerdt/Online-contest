@@ -21,6 +21,7 @@
             <span>Wedstrijdfoto's</span>
             <img src="/img/pointing_hand_right.jpg">
         </div>
+        @if ($contestimages->count())
 		<table class="table table-hover">
 			<tr>
 				<th>ID</th>
@@ -47,5 +48,8 @@
 			@endforeach
 		</table>
 		<p>* De foto's worden in de volgorde van de tabel wekelijks in de wedstrijd geïmplementeerd.</p>
+		@else
+			<h3 class="centertext">Er zijn geen wedstrijdfoto's</h3>
+		@endif
 	</div>
 @endsection

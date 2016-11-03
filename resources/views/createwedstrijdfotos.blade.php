@@ -31,7 +31,7 @@
 		</div>
 		<div class="form-group">
 			<div class="col-sm-offset-2 col-sm-10">
-				{{Form::submit('Verstuur', ['class' => 'btn btn-default'])}}
+				{{Form::submit('Upload', ['class' => 'btn btn-default'])}}
 			</div>
 		</div>
 	{!! Form::close() !!}

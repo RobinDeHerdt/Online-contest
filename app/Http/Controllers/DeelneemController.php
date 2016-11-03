@@ -37,9 +37,6 @@ class DeelneemController extends Controller
   		}
   		else 
   		{
-
-        dd($request);
-
         $user = User::find($user_id);
         $user->ip_adress      = request()->ip();
         $user->save();
