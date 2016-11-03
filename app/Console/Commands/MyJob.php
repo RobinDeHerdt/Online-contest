@@ -65,15 +65,6 @@ class MyJob extends Command
 
             echo "Winner picked\n";
 
-            Excel::create('deelnemers', function($excel) {
-                $excel->setTitle('deelnemerslijst');
-                $excel->sheet('Deelnemers', function($sheet) {
-                    $sheet->fromModel(User::all());
-                });
-            })->store('xlsx');
-
-            echo "Excel exported\n";
-
             \Mail::to("robindh95@gmail.com")->send(new ContestResults($winner, $user));
 
             echo "Email with results sent\n";
@@ -83,7 +74,7 @@ class MyJob extends Command
                 $creation->save();
             }
 
-            echo "Soft deleted creations for this cycle\n";
+            echo "Soft deleted creations for this week\n";
         }
 
         $contestimage = Contestimage::where('isUsed', false)->first();

@@ -6,11 +6,8 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Storage;
 
-use App\User;
-
-class ContestResults extends Mailable
+class DailyExcel extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -19,10 +16,9 @@ class ContestResults extends Mailable
      *
      * @return void
      */
-    public function __construct($winningcreation, $user)
+    public function __construct()
     {
-        $this->winningcreation = $winningcreation;
-        $this->user = $user;
+        //
     }
 
     /**
@@ -32,12 +28,11 @@ class ContestResults extends Mailable
      */
     public function build()
     {
+        $storagePath       = storage_path();
+
         return $this->from('robindh95@gmail.com', 'Humo')
-        ->subject('Wedstrijdresultaten')
-        ->view('emails.contestresults')
-        ->with(['winner_id' => $this->user->id,
-                'winner_fname' => $this->user->first_name,
-                'winner_lname' => $this->user->last_name,
-        ]);
+        ->subject('Deelnemerslijst')
+        ->view('emails.dailyexcel')
+        ->attach($storagePath . "/exports/deelnemers.xlsx");
     }
 }

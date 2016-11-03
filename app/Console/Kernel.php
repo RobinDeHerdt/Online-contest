@@ -14,6 +14,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         Commands\MyJob::class,
+        Commands\DailyMailJob::class,
     ];
 
     /**
@@ -24,9 +25,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
-        $schedule->command('do:nextweek')->everyMinute();
+        $schedule->command('do:nextweek')->hourly();
+        $schedule->command('do:dailymail')->daily();
     }
 
     /**
