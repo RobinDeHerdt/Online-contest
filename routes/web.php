@@ -34,3 +34,4 @@ Route::post('/administrator/destroy/{id}', 'AdminController@destroy');
 Route::post('/administrator/restore/{id}', 'AdminController@restore');
 Route::post('/administrator/wedstrijdfotos/create' , 'WedstrijdfotoController@store');
 Route::post('/administrator/wedstrijdfotos/destroy/{id}' , 'WedstrijdfotoController@destroy');
+Route::get('/administrator/downloadExcel', 'AdminController@downloadExcel');

@@ -46,10 +46,10 @@ class MyJob extends Command
     {
         echo "Starting job\n";
 
-        // http://stackoverflow.com/questions/24208502/laravel-orderby-relationship-count
-        // Tel alle stemmen bij de creaties die nu deelnemen, sorteer ze dan en output 1 winnaar
         if(Creation::where('isParticipating', true)->count())
         {
+            // http://stackoverflow.com/questions/24208502/laravel-orderby-relationship-count
+            // Tel alle stemmen bij de creaties die nu deelnemen, sorteer ze dan en output 1 winnaar
             $orderedCreations = Creation::with('votes')->where('isParticipating', true)->get()->sortBy(function($creation)
             {
                 return $creation->votes->count();
@@ -78,7 +78,6 @@ class MyJob extends Command
 
             echo "Email with results sent\n";
 
-            // Zet als dit werkt bij alle huidige deelnames isParticipating op false
             foreach ($orderedCreations as $creation) {
                 $creation->isParticipating = false;
                 $creation->save();
@@ -86,7 +85,7 @@ class MyJob extends Command
 
             echo "Soft deleted creations for this cycle\n";
         }
-        // Zet gebruikte contestimage op true
+
         $contestimage = Contestimage::where('isUsed', false)->first();
         $contestimage->isUsed = true;
         $contestimage->save();

@@ -7,6 +7,8 @@
 @section('content')
 	<div class="col-md-12 padding-bottom admin-tabel">
 	<a href="/administrator/wedstrijdfotos" class="back-link">Wedstrijdfoto's</a>
+	<br>
+	<a href="/administrator/downloadExcel" class="back-link">Exporteer naar excel</a>
 		<div class="wedstrijden-header">
             <img src="img/pointing_hand_left.jpg">
             <span>Deelnemerslijst</span>

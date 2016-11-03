@@ -265,7 +265,7 @@ table td {
 }
 
 .admin-tabel {
-	padding: 0 50px 0 50px !important;
+	padding: 0 50px 80px 50px !important;
 }
 
 @media (max-width: 1000px) {

@@ -20,10 +20,10 @@ class UsersTableSeeder extends Seeder
             'street_number' => 'Vlinderstraat 22',
             'postalcode' => '2220',
             'city' => 'Heist-op-den-Berg',
-            'email' => 'robindh@gmail.com',
+            'email' => 'admin@humo.be',
             'ip_adress' => '127.0.0.1',
             'isAdmin' => true,
-            'password' => bcrypt('123456'),
+            'password' => bcrypt('admin'),
         ]);
     }
 }

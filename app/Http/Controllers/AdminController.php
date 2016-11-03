@@ -7,7 +7,10 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Creation;
 use App\Winner;
+use App\User;
 use Storage;
+use Excel;
+use DB;
 
 class AdminController extends Controller
 {
@@ -55,5 +58,25 @@ class AdminController extends Controller
         }
 
     	return back();
+    }
+
+    public function downloadExcel()
+    {
+        $creations = DB::table('creations')
+                ->leftJoin('users', 'creations.user_id', '=', 'users.id')
+                ->select('users.first_name', 'users.last_name','users.date_of_birth', 'users.email', 'users.street_number', 'users.postalcode', 'users.city', 'users.ip_adress', 'creations.description', 'creations.image_url', 'creations.image_url', 'creations.created_at')
+                ->get();
+
+        foreach ($creations as $creation) {
+            $data[] = (array)$creation;
+        }
+
+        Excel::create('deelnemers_test', function($excel) use($data){
+                $excel->setTitle('deelnemerslijst');
+
+                $excel->sheet('Deelnemers', function($sheet) use($data){
+                    $sheet->fromArray($data);
+                });
+        })->download('xlsx');
     }
 }
