@@ -56,7 +56,6 @@ class RegisterController extends Controller
             'date_of_birth' => 'required|date|before:today',
             'street_number' => array('required','max:255','regex:/(^[A-Za-z0-9 -]+$)+/'),
             'postalcode'    => array('required','max:10','regex:/(^[A-Za-z0-9 -]+$)+/'),
-            'ip_adress'     => 'required|ip',
             'city'          => array('required','max:255','regex:/(^[A-Za-z0-9 -]+$)+/'),
         ]);
     }
