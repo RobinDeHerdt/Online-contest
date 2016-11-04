@@ -9,6 +9,7 @@ use App\User;
 use App\Winner;
 use App\Creation;
 use App\Contestimage;
+use App\Mailrecipient;
 use App\Mail\ContestResults;
 
 class MyJob extends Command
@@ -65,9 +66,11 @@ class MyJob extends Command
 
             echo "Winner picked\n";
 
-            \Mail::to("robindh95@gmail.com")->send(new ContestResults($winner, $user));
+            $mailadress = Mailrecipient::find(1);
 
-            echo "Email with results sent\n";
+            \Mail::to($mailadress)->send(new ContestResults($winner, $user));
+
+            echo "Email with results sent " . $mailadress . "\n";
 
             foreach ($orderedCreations as $creation) {
                 $creation->isParticipating = false;

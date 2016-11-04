@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Mailrecipient;
 use App\Creation;
 use App\Winner;
 use App\User;
@@ -20,6 +21,7 @@ class AdminController extends Controller
     	$creations  			= Creation::paginate(15);
         $winners                = Winner::all();
     	$softDeletedCreations 	= Creation::onlyTrashed()->get();
+        $admin_email            = Mailrecipient::find(1);
 
     	return view('adminmodule', [
             'creations' => $creations, 

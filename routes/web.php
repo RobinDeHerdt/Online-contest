@@ -27,11 +27,13 @@ Route::post('/download' , 'WedstrijdController@download');
 
 // Admin routes
 Route::get('/administrator' , 'AdminController@index')->middleware('admin');
+Route::get('/administrator/email' , 'AdminemailController@index')->middleware('admin');
 Route::get('/administrator/wedstrijdfotos' , 'WedstrijdfotoController@index')->middleware('admin');
 Route::get('/administrator/wedstrijdfotos/create' , 'WedstrijdfotoController@create')->middleware('admin');
 
 Route::post('/administrator/destroy/{id}', 'AdminController@destroy');
 Route::post('/administrator/restore/{id}', 'AdminController@restore');
+Route::post('/administrator/email' , 'AdminemailController@store');
 Route::post('/administrator/wedstrijdfotos/create' , 'WedstrijdfotoController@store');
 Route::post('/administrator/wedstrijdfotos/destroy/{id}' , 'WedstrijdfotoController@destroy');
 Route::get('/administrator/downloadExcel', 'AdminController@downloadExcel');

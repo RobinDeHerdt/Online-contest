@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use App\Mail\DailyExcel;
+use App\Mailrecipient;
 use Excel;
 use DB;
 
@@ -58,8 +59,10 @@ class DailyMailJob extends Command
 
         echo "Excel exported\n";
 
-        \Mail::to("robindh95@gmail.com")->send(new DailyExcel());
+        $mailadress = Mailrecipient::find(1);
 
-        echo "Excel Mail sent\n";
+        \Mail::to($mailadress)->send(new DailyExcel());
+
+        echo "Excel Mail sent to " . $mailadress . "\n";
     }
 }

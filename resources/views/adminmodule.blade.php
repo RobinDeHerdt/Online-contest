@@ -9,6 +9,8 @@
 	<a href="/administrator/wedstrijdfotos" class="back-link">Wedstrijdfoto's</a>
 	<br>
 	<a href="/administrator/downloadExcel" class="back-link">Exporteer naar excel</a>
+	<br>
+	<a href="/administrator/email" class="back-link">Email wedstrijdverantwoordelijke</a>
 		<div class="wedstrijden-header">
             <img src="img/pointing_hand_left.jpg">
             <span>Deelnemerslijst</span>
