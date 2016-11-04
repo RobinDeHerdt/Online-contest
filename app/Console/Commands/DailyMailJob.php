@@ -61,7 +61,7 @@ class DailyMailJob extends Command
 
         $mailadress = Mailrecipient::find(1);
 
-        \Mail::to($mailadress)->send(new DailyExcel());
+        \Mail::to($mailadress->email)->send(new DailyExcel());
 
         echo "Excel Mail sent to " . $mailadress . "\n";
     }

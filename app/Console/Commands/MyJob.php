@@ -68,7 +68,7 @@ class MyJob extends Command
 
             $mailadress = Mailrecipient::find(1);
 
-            \Mail::to($mailadress)->send(new ContestResults($winner, $user));
+            \Mail::to($mailadress->email)->send(new ContestResults($winner, $user));
 
             echo "Email with results sent " . $mailadress . "\n";
 
